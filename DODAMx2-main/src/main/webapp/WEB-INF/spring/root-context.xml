@@ -10,9 +10,9 @@
 		<!--원본 <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<!--원본 <property name="url" value="jdbc:mysql://g-mysql-1.cfmagchysxsn.ap-northeast-2.rds.amazonaws.com:53306/dolphin" /> -->
-		<property name="url" value="jdbc:log4jdbc:mysql://g-mysql-1.cfmagchysxsn.ap-northeast-2.rds.amazonaws.com:53306/zabazo?allowMultiQueries=true" />
-		<property name="username" value="zbmaster" />
-		<property name="password" value="1!E%aJA3" />
+		<property name="url" value="jdbc:log4jdbc:mysql:/mydb.c6rg696asote.us-east-1.rds.amazonaws.com:3306/zabazo?allowMultiQueries=true" />
+		<property name="username" value="admin" />
+		<property name="password" value="!dmssk6480" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
