@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+	<mapper namespace="com.dodam.infra.modules.code.CodeMapper">
+    <resultMap id="resultMapObj" type="com.dodam.infra.modules.code.Code"></resultMap>
+    	<sql id="selectCommon">
+    		FROM code a
+    		LEFT JOIN codeGroup b ON a.codeGroupSeq = b.codeGroupSeq
+	    	WHERE 1=1
+	   		<choose>
+				<when test="shDelNy == 2"></when>
+				<when test="shDelNy != null and !shDelNy.equals('')">AND a.codeDelNy = #{shDelNy}</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="shUseNy == 2"></when>
+				<when test="shUseNy != null and !shUseNy.equals('')">AND a.codeUseNy = #{shUseNy}</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="shOption == 1">AND a.codeSeq = #{shValue}</when>
+				<when test="shOption == 2">AND a.codeName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND b.codeGroupSeq = #{shValue}</when>
+				<when test="shOption == 4">AND b.codeGroupName LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+			</choose>
+	 	</sql>
+    
+    
+		<select id="selectList" resultMap="resultMapObj">
+			<include refid="Base.selectListUpperForMysql"/>
+			SELECT
+				a.codeSeq
+				,a.codeName
+				,a.codeUseNy
+				,a.codeDelNy
+				,a.codeRegDate
+				,a.codeModDate
+				,b.codeGroupName
+				<include refid="selectCommon"/>
+			<include refid="Base.selectListLowerForMysql"/>
+		</select>
+		
+		<select id="codeGroupList" resultMap="resultMapObj">
+			SELECT
+				codeGroupName
+				,codeGroupSeq
+			FROM codeGroup
+		</select>
+		
+		<select id="selectOneCount" resultType="Integer">
+			SELECT
+				count(*)
+			<include refid="selectCommon"/>
+		</select>
+		
+		<select id="selectOne" resultMap="resultMapObj">
+			SELECT
+				a.codeSeq
+				,a.codeName
+				,a.codeUseNy
+				,a.codeDelNy
+				,a.codeRegDate
+				,a.codeModDate
+				,b.codeGroupName
+			FROM
+				code a
+			LEFT JOIN
+				codeGroup b
+			ON
+				a.codeGroupSeq = b.codeGroupSeq
+			WHERE 1=1
+				AND a.codeSeq = #{codeSeq}
+		</select>
+		
+		<insert id="insert">
+			insert into code(
+				codeName
+				,codeGroupSeq
+				,codeUseNy
+				,codeDelNy
+				,codeRegdate
+			)
+			values(
+				#{codeName}
+				,#{codeGroupSeq}
+				,#{codeUseNY}
+				,#{codeDelNY}
+				,now()
+			)
+			<selectKey resultType="String" keyProperty="codeSeq" order="AFTER"> 
+				select last_insert_id()
+			</selectKey>
+		</insert>
+		
+		<update id="update">
+			update code
+			set
+				codeName = #{codeName}
+				,codeGroupSeq = #{codeGroupSeq}
+				,codeUseNy = #{codeUseNy}
+				,codeDelNy = #{codeDelNy}
+				,codeModdate = now()
+			where 
+				codeSeq = #{codeSeq}	
+		</update>
+		<select id="selectListCachedCodeArrayList" resultMap="resultMapObj"> 
+			SELECT 
+				codeSeq 
+				,codeName 
+				,codeGroupSeq 
+			FROM code 
+			WHERE 1=1 
+		</select>
+</mapper>

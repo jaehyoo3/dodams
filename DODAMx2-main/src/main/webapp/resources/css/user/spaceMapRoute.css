@@ -1,0 +1,477 @@
+/*  */
+.radio {
+	margin: 0.5rem;
+}
+
+.radio input[type=radio] {
+	position: absolute;
+	opacity: 0;
+}
+
+.radio input[type=radio]+.radio-label:before {
+	content: "";
+	background: #f4f4f4;
+	border-radius: 100%;
+	border: 1px solid #b4b4b4;
+	display: inline-block;
+	width: 1.2em;
+	height: 1.2em;
+	position: relative;
+	top: -0.2em;
+	margin-right: 1em;
+	vertical-align: bottom;
+	cursor: pointer;
+	text-align: center;
+	transition: all 250ms ease;
+}
+
+.radio input[type=radio]:checked+.radio-label:before {
+	background-color: #FF4A4A;
+	box-shadow: inset 0 0 0 4px #f4f4f4;
+}
+
+.radio input[type=radio]:focus+.radio-label:before {
+	outline: none;
+	border-color: #FF4A4A;
+}
+
+.radio input[type=radio]:disabled+.radio-label:before {
+	box-shadow: inset 0 0 0 4px #f4f4f4;
+	border-color: #b4b4b4;
+	background: #b4b4b4;
+}
+
+.radio input[type=radio]+.radio-label:empty:before {
+	margin-right: 0;
+}
+
+/*  */
+/*  */
+@font-face {
+	font-family: 'SUIT-Medium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+.disIn {
+	display: inline-block;
+}
+
+
+
+img {
+	max-width: 100%;
+}
+
+li {
+	list-style: none;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+hr {
+	background: #eeeeee;
+	height: 1px;
+	border: 0;
+	margin-bottom: 30px;
+}
+
+.addr {
+	color: tomato;
+}
+
+
+.containers{
+    width: 100%;
+	min-height:94.5vh;
+    background-color: #fff;
+    display: flex;
+    overflow: hidden;
+}
+
+.wrapper {
+	display: flex;
+	width:90%;
+	padding-top:80px;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.mpaArea{
+	width:40%;
+	display:flex;
+	flex-direction:column;
+	margin-right: 50px;
+}
+/* 지도영역 s */
+.mapTitle {
+	width: 100%;
+}
+.wP {
+	width: 100%;
+}
+
+.mapTitle p {
+	font-size: 20px;
+	font-weight: 600;
+}
+.mapDetail {
+	width: 70%;
+	height: 70%;
+	margin-left: 15%;
+	margin-top: 3%;
+	background-color: gray;
+}
+.category{
+	display: flex;
+}
+/* 지도영역 e */
+
+/* MapReg s */
+.mapReg {
+	width: 40%;
+	height: 100%;
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-content:center;
+	padding:15px;
+}
+.mapRegTitle {
+	width: 100%;
+	text-align: center;
+}
+.mapRegTitle p{
+	font-size: 20px;
+	font-weight: 600;
+}
+.mapRegDetail {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 18px 0px;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+.RegCatagory{
+	display: flex;
+	align-items: center;
+}
+.mapRegDetail-item{
+	width:60%;
+	margin-top:12px;
+}
+.RegBtn{
+	display: flex;
+}
+
+
+.textBoxTwo {
+	width: 300px;
+	height: 40px;
+}
+
+.btnBox {
+	width: 80px;
+	height: 40px;
+	margin-left: 10px;
+}
+
+.regBtn {
+	width: 180px;
+	height: 40px;
+}
+.imgbox{
+	display:flex;
+	justify-content:center;
+	width:100%;
+	margin-top:10px;	
+	text-align: center;
+}
+.imgtitle{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.imgWrap{
+	height: 150px;
+	border:1px solid #e0e0e0;
+	border-radius: 5px;
+	display: flex;
+	justify-content:center;
+	flex-wrap:wrap;
+	overflow: auto;
+}
+.imgview{
+	width:100px;
+	height: 90%;
+	border: 1px solid;
+	overflow:hidden;
+	margin: 7px 5px 5px 5px;
+}
+.imgview img{
+	width:100%;
+	height:100%;
+}
+#memoryImg{
+	display: none;
+}
+.addimg{
+	width:30px;
+	height: 30px;
+	border-radius:50%;
+	border:1px solid #e0e0e0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#searchBox{
+	display: flex;
+	justify-content: center;
+}
+
+/*____________________________ */
+/* test */
+
+
+/* 221120 s*/
+.dateBox {
+	width: 100%;
+	height: 100%;
+	color: grey;
+	display: flex;
+	display: inline-block;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 194px;
+	height: 40px;
+}
+/* 221120 e*/
+
+.map_wrap, .map_wrap * {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+	color: #000;
+	text-decoration: none;
+}
+
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+
+#menu_wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 250px;
+	margin: 10px 0 30px 10px;
+	padding: 5px;
+	overflow-y: auto;
+	background: rgba(255, 255, 255, 0.7);
+	z-index: 1;
+	font-size: 12px;
+	border-radius: 10px;
+}
+
+.bg_white {
+	background: #fff;
+}
+
+#menu_wrap hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 2px solid #5F5F5F;
+	margin: 3px 0;
+}
+
+#menu_wrap .option {
+	text-align: center;
+}
+
+#menu_wrap .option p {
+	margin: 10px 0;
+}
+
+#menu_wrap .option button {
+	margin-left: 5px;
+}
+
+#placesList li {
+	list-style: none;
+}
+
+#placesList .item {
+	position: relative;
+	border-bottom: 1px solid #888;
+	overflow: hidden;
+	cursor: pointer;
+	min-height: 90px;
+}
+
+#placesList .item span {
+	display: block;
+	margin-top: 4px;
+}
+
+#placesList .item h5, #placesList .item .info {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#placesList .item .info {
+	padding: 10px 0 10px 55px;
+}
+
+#placesList .info .gray {
+	color: #8a8a8a;
+}
+
+#placesList .info .jibun {
+	padding-left: 26px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+		no-repeat;
+}
+
+#placesList .info .tel {
+	color: #009900;
+}
+
+#placesList .item .markerbg {
+	float: left;
+	position: absolute;
+	width: 36px;
+	height: 37px;
+	margin: 10px 0 0 10px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+		no-repeat;
+}
+
+#placesList .item .marker_1 {
+	background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+	background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+	background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+	background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+	background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+	background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+	background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+	background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+	background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+	background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+	background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+	background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+	background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+	background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+	background-position: 0 -654px;
+}
+
+#pagination {
+	margin: 10px auto;
+	text-align: center;
+}
+
+#pagination a {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#pagination .on {
+	font-weight: bold;
+	cursor: default;
+	color: #777;
+}
+
+#zbtfDate{
+	cursor: pointer;
+}
+#keywordMsg{
+	text-align: center;
+}
+/* test */
+
+
+#att_zone{
+	width: 660px;
+	min-height:150px;
+	padding:10px;
+	border:1px solid #e0e0e0;
+}
+#att_zone:empty:before{
+	content : attr(data-placeholder);
+	color : #999;
+	font-size:.9em;
+}
+#btnAtt{
+    display: none;
+}
+.btnAttCss{
+    text-align: center;
+    width: 120px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}

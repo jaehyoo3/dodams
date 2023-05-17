@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.dodam.infra.modules.space.SpaceMapper">
+	<resultMap id="resultMapObj" type="com.dodam.infra.modules.space.Space"></resultMap>
+
+
+	<!-- 스페이스 전체 리스트 조회 -->
+	<!-- <select id="selectList" resultMap="resultMapObj"> SELECT zbspSeq ,zbspName ,zbspStartDate ,zbspEndDate ,zbspDelNy ,zbspShareNy ,zbspEndNy ,zbspRegDate 
+		FROM zbspSpace WHERE 1=1 </select> -->
+	<sql id="selectCommon">
+   		FROM zbspSpace a
+   		INNER JOIN zbsiSpaceInvite b on a.zbspSeq = b.zbspSeq
+    	WHERE 1=1
+    	AND b.zbsiAdminNy = 1
+   		<choose>
+			<when test="shDelNy == 2"></when>
+			<when test="shDelNy != null and !shDelNy.equals('')">AND a.zbspDelNy = #{shDelNy}</when>
+			<otherwise></otherwise>
+		</choose>
+		<choose>
+			<when test="zbspEndNy == 2"></when>
+			<when test="zbspEndNy != null and !zbspEndNy.equals('')">AND a.zbspEndNy = #{zbspEndNy}</when>
+			<otherwise></otherwise>
+		</choose>
+		<choose>
+			<when test="zbspShareNy == 2"></when>
+			<when test="zbspShareNy != null and !zbspShareNy.equals('')">AND a.zbspShareNy = #{zbspShareNy}</when>
+			<otherwise></otherwise>
+		</choose>
+		<choose>
+			<when test="shOption == 1">AND a.zbspSeq = #{shValue}</when>
+			<when test="shOption == 2">AND a.zbspName LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+ 	</sql>
+	
+
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql"/>
+		SELECT
+			a.zbspSeq
+			,a.zbspName
+			,a.zbspStartDate
+			,a.zbspEndDate
+			,a.zbspDelNy
+			,a.zbspShareNy
+			,a.zbspEndNy
+			,b.zbsiAdminNy
+			,(select zbmmName from zbmmMember where 1=1 and zbmmSeq = b.zbmmSeq and b.zbsiAdminNy = 1) as xAdminUser
+			,(select count(zbmmSeq) from zbsiSpaceInvite where 1=1 and zbspSeq = a.zbspSeq and zbsiInviteNy in (0 , 2)) as xSpaceUser
+			,a.zbspRegDate
+		<include refid="selectCommon"/>
+		<include refid="Base.selectListLowerForMysql"/>
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT
+			count(*)
+		<include refid="selectCommon"/>
+	</select>
+	
+	<!-- 스페이스 selectOne 조회 -->
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.zbspSeq
+			,a.zbspName
+			,a.zbspStartDate
+			,a.zbspEndDate
+			,a.zbspDelNy
+			,a.zbspShareNy
+			,a.zbspEndNy
+			,(select count(zbmmSeq) from zbsiSpaceInvite where 1=1 and zbspSeq = a.zbspSeq and zbsiInviteNy in (0 , 2)) as xSpaceUser
+			,a.zbspRegDate
+			,DATEDIFF(NOW(), zbspStartDate) as xDdayBefore
+			,DATEDIFF(zbspEndDate, NOW()) as xDdayEnd
+			<!-- ,<if test="zbtfEndNy == 1 or zbtfEndNy.equals('1')"></if>(SELECT TRUNCATE(AVG(a.zbsiLike), 0) FROM zbsiSpaceInvite a WHERE 1=1 AND zbspSeq = #{zbspSeq}) as xLikeScore -->
+			,b.path
+			,b.uuidName
+			,b.type
+		FROM zbspSpace a
+			left join zbspSpaceUploaded b
+			on b.pseq = a.zbspSeq
+			WHERE 1=1
+			AND a.zbspSeq = #{zbspSeq}
+	</select>
+
+	<!-- 스페이스 생성화면 -->
+	<insert id="spaceInst">
+		INSERT INTO zbspSpace(
+			zbspName
+			,zbspStartDate
+			,zbspEndDate
+			,zbspDelNy
+			,zbspShareNy
+			,zbspEndNy
+			,zbspRegDate
+			)
+			VALUES(
+			#{zbspName}
+			,#{zbspStartDate}
+			,#{zbspEndDate}
+			,0
+			,1
+			,0
+			,now()
+			)
+		<selectKey resultType="String" keyProperty="zbspSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+
+	<!-- 여행 테마 -->
+	<!-- 조회 s -->
+	<select id="selectThemes" resultMap="resultMapObj">
+		SELECT
+			a.zbspSeq
+			,a.zbskSeq
+			,a.zbskKeywordCode
+			,a.zbskKeywordType
+			FROM zbskSpaceKeyword a
+		WHERE 1=1
+			AND a.zbspSeq = #{zbspSeq}
+			ORDER BY a.zbskKeywordCode
+	</select>
+	<!-- spaceMain select KeywordCode s -->
+	<select id="FindThemes" resultMap="resultMapObj">
+	select 
+		zbskKeywordCode
+	from
+		zbskSpaceKeyword
+	where 1=1
+		and zbspSeq = #{zbspSeq}
+		and zbskKeywordCode in(26,27,28,29)
+	</select>
+	
+	<select id="FindRegions" resultMap="resultMapObj">
+	select 
+		zbskKeywordCode
+	from
+		zbskSpaceKeyword
+	where 1=1
+		and zbspSeq = #{zbspSeq}
+		and zbskKeywordCode BETWEEN 1 and 16
+	</select> 
+	<!-- spaceMain select KeywordCode e -->
+	<!-- 조회 e -->
+
+	<insert id="spaceThemes">
+		INSERT INTO zbskSpaceKeyword(
+			zbspSeq
+			,zbskKeywordCode
+			,zbskKeywordType
+			,zbskDelNy
+			)
+			VALUES(
+			#{zbspSeq}
+			,#{zbskKeywordCode}
+			,1
+			,0
+			)
+		<selectKey resultType="String" keyProperty="zbskSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+
+	<!-- 여행 지역 -->
+	<insert id="spaceRegion">
+		INSERT INTO zbskSpaceKeyword(
+			zbspSeq
+			,zbskKeywordCode
+			,zbskKeywordType
+			,zbskDelNy
+			)
+			VALUES(
+			#{zbspSeq}
+			,#{zbskKeywordCode}
+			,2
+			,0
+			)
+		<selectKey resultType="String" keyProperty="zbskSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+
+	<insert id="spaceAdmin">
+		INSERT INTO zbsiSpaceInvite(
+			zbsiInviteNy
+			,zbspSeq
+			,zbmmSeq
+			,zbsiAdminNy
+			,zbsiLike
+			,zbsiDelNy
+			)
+			VALUES(
+			0
+			,#{zbspSeq}
+			,#{zbmmSeq}
+			,1
+			,0
+			,0
+			)
+		<selectKey resultType="String" keyProperty="zbsiSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<insert id="spaceInvite">
+		INSERT INTO zbsiSpaceInvite(
+			zbsiInviteNy
+			,zbspSeq
+			,zbmmSeq
+			,zbsiAdminNy
+			,zbsiLike
+			,zbsiDelNy
+			)
+			VALUES(
+			2
+			,#{zbspSeq}
+			,(select zbmmSeq from zbmmMember where 1=1 and zbmmID = #{shMember})
+			,0
+			,0
+			,0
+			)
+		<selectKey resultType="String" keyProperty="zbsiSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<!-- 스페이스 생성화면 E -->
+
+	<!-- 스페이스 뷰 S -->
+	<select id="spaceOne" resultMap="resultMapObj">
+		SELECT
+			a.zbspName
+			,a.zbspStartDate
+			,a.zbspEndDate
+			,b.zbskKeywordCode
+			,b.zbskKeywordType
+			FROM
+			zbspSpace a
+			LEFT JOIN zbskSpaceKeyword b on a.zbspSeq = b.zbspSeq
+			WHERE 1=1
+		AND a.zbspSeq = #{zbspSeq}
+	</select>
+	<select id="searchUser" resultMap="resultMapObj">
+		SELECT 
+			zbmmID
+			,zbmmName
+		from 
+			zbmmMember
+		WHERE 1=1
+		AND	zbmmID LIKE CONCAT('%',#{shMember},'%')
+		OR zbmmName LIKE CONCAT('%',#{shMember},'%')
+	</select>
+	<select id="selectOneinviteCheckId" resultType="Integer">
+		SELECT 
+			COUNT(*)
+		from 
+			zbmmMember
+		WHERE 1=1
+		AND zbmmID = #{shMember}
+		OR zbmmName = #{shMember}
+	</select>
+	<!-- 스페이스 뷰 E -->
+	
+	<!-- TravelFlag selectList 지도 s -->
+	<select id="selectListTravelFlag" resultMap="resultMapObj">
+	SELECT
+		zbtfSeq
+		,zbtfTypeCode
+		,zbtfDate
+		,zbtfFlagName
+	    ,zbtfName
+	    ,zbtfSort
+	    ,zbtfAddr
+	    ,zbtfLocationX
+	    ,zbtfLocationY
+	    ,zbspSeq
+	FROM zbtfTravelFlag
+	WHERE 1=1
+		AND zbtfDelNy = 0
+		<if test="zbtfTypeCode != null and !zbtfTypeCode.equals('')">AND zbtfTypeCode = #{zbtfTypeCode}</if>
+	    AND zbspSeq = #{zbspSeq}
+	ORDER BY zbtfSort
+	</select>
+	
+	<!-- TravelFlag selectList 지도 e -->
+	<!-- TravelFlag selectOne 지도 s -->
+	<select id="selectOneTravelFlag" resultMap="resultMapObj">
+	SELECT
+		zbtfSeq
+		,zbtfTypeCode
+		,zbtfDate
+		,zbtfFlagName
+	    ,zbtfName
+	    ,zbtfSort
+	    ,zbtfAddr
+	    ,zbtfLocationX
+	    ,zbtfLocationY
+	    ,zbspSeq
+	FROM zbtfTravelFlag
+	WHERE 1=1
+		AND zbtfDelNy = 0
+		<if test="zbtfTypeCode != null and !zbtfTypeCode.equals('')">AND zbtfTypeCode = #{zbtfTypeCode}</if>
+	    AND zbtfSeq = #{zbtfSeq}
+	    <!-- AND zbspSeq = #{zbspSeq} -->
+	ORDER BY zbtfSort
+	</select>
+	<!-- TravelFlag selectOne 지도 e -->
+		<!-- 스페이스 더치페이 S -->
+	<select id="memberList" resultMap="resultMapObj">
+		SELECT
+			a.zbmmID
+			,a.zbsiSeq
+			,a.zbspSeq
+			,b.path
+			,b.uuidName
+		FROM
+			v_space a
+		LEFT JOIN
+			zbspSpaceUploaded b
+		ON
+			b.pseq = a.zbmmSeq
+		WHERE
+			1=1
+		AND a.zbspSeq = #{zbspSeq}
+	</select>
+	<insert id="spaceDutchPay">
+		insert into zbdpDutchPay(
+			zbdpDutchType
+			,zbdpTitle
+			,zbdpDate
+			,zbdpDelNy
+			,zbdpNcost
+			,zbdpTotal
+			,zbsiSeq
+			,zbdpNum
+			,zbspSeq
+		) values(
+			1
+			,#{zbdpTitle}
+			,now()
+			,0
+			,#{zbdpNcost}
+			,#{zbdpTotal}
+			,#{zbsiSeq}
+			,#{zbdpNum}
+			,#{zbspSeq}
+		)
+		<selectKey resultType="String" keyProperty="zbdpSeq" order="AFTER">
+				SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	<select id="spaceDutchPayList" resultMap="resultMapObj">
+		select
+			zbdpDutchType
+			,zbdpTitle
+			,zbdpDate
+			,zbdpNcost
+			,zbdpTotal
+			,Count(zbsiSeq) as zbsiCnt
+		from
+			zbdpDutchPay
+		where
+			1=1
+		and zbspSeq = #{zbspSeq}
+		group by zbdpNum
+	</select>
+	<!-- 스페이스 더치페이 E -->
+	<select id="spaceMemberimg" resultMap="resultMapObj">
+		SELECT
+			a.zbmmID
+			,a.zbsiSeq
+			,a.zbspSeq
+			,b.path
+			,b.uuidName
+		FROM
+			v_space a
+		LEFT JOIN
+			zbspSpaceUploaded b 
+		ON
+			b.pseq = a.zbmmSeq
+		WHERE
+			1=1
+		AND zbmmSeq = #{zbmmSeq}
+		and zbspSeq = #{zbspSeq}
+	</select>
+	<!--  스 멤 이 E -->
+	<!-- TravelFlag Insert s -->
+	<insert id="InsertTravelFlag">
+	INSERT INTO zbtfTravelFlag (
+		zbtfTypeCode
+	    ,zbtfDate
+	    ,zbtfFlagName
+	    ,zbtfName
+	    ,zbtfSort
+	    ,zbtfAddr
+	    ,zbtfLocationX
+	    ,zbtfLocationY
+	    ,zbtfDelNy
+	    ,zbspSeq
+		)
+    VALUES (
+	    #{zbtfTypeCode}
+	    ,#{zbtfDate}
+	    ,#{zbtfFlagName}
+	    ,#{zbtfName}
+	    <choose>
+		    <when test="zbtfSort != null and !zbtfSort.equals('') and zbtfTypeCode != '1' and zbtfTypeCode != 1 and !zbtfTypeCode.equals('1')">,#{zbtfSort}</when>
+		    <otherwise>,0</otherwise>
+	    </choose>
+	    ,#{zbtfAddr}
+	    ,#{zbtfLocationX}
+	    ,#{zbtfLocationY}
+	    ,0
+	    ,#{zbspSeq}
+		)
+	<selectKey resultType="String" keyProperty="zbtfSeq" order="AFTER">
+			SELECT last_insert_id()
+	</selectKey>
+	</insert>
+	<!-- TravelFlag Insert e -->
+	
+	<!-- TravelFlag Update s -->
+	<update id="UpdateTravelFlag">
+	UPDATE zbtfTravelFlag SET
+		zbtfTypeCode = #{zbtfTypeCode}
+	    ,zbtfDate = #{zbtfDate}
+	    ,zbtfFlagName = #{zbtfFlagName}
+	    ,zbtfName = #{zbtfName}
+	    <choose>
+		    <when test="zbtfSort != null and !zbtfSort.equals('') and zbtfTypeCode != '1' and zbtfTypeCode != 1 and !zbtfTypeCode.equals('1')">,zbtfSort = #{zbtfSort}</when>
+		    <otherwise>,zbtfSort = 0</otherwise>
+	    </choose>
+	    ,zbtfAddr = #{zbtfAddr}
+	    ,zbtfLocationX = #{zbtfLocationX}
+	    ,zbtfLocationY = #{zbtfLocationY}
+	    ,zbtfDelNy = 0
+	    ,zbspSeq = #{zbspSeq}
+	WHERE 1=1
+		AND zbtfSeq = #{zbtfSeq}
+	</update>
+	<!-- TravelFlag Update e -->
+	
+	<!-- TravelFlag Uelete s -->
+	<update id="UeleteTravelFlag">
+	UPDATE zbtfTravelFlag SET
+	    zbtfDelNy = 1
+	WHERE 1=1
+		AND zbtfSeq = #{zbtfSeq}
+	</update>
+	<!-- TravelFlag Uelete e -->
+	
+	<!-- 스페이스 세팅 부분 -->
+	<select id="selectOneSpaceRegion" resultMap="resultMapObj">
+		SELECT 
+			a.zbspSeq 
+			,a.zbskSeq 
+			,a.zbskKeywordType
+		    ,GROUP_CONCAT(zbskKeywordCode SEPARATOR ',') AS zbskKeywordCode
+		FROM zbskSpaceKeyword a 
+		WHERE 1=1 
+		AND a.zbspSeq = #{zbspSeq} 
+		AND a.zbskKeywordType = 2
+		group BY a.zbskKeywordType;
+	</select>
+	<select id="selectOneSpaceTravelTheme" resultMap="resultMapObj">
+		SELECT 
+			a.zbspSeq 
+			,a.zbskSeq 
+			,a.zbskKeywordType
+		    ,GROUP_CONCAT(zbskKeywordCode SEPARATOR ',') AS zbskKeywordCode
+		FROM zbskSpaceKeyword a 
+		WHERE 1=1 
+		AND a.zbspSeq = #{zbspSeq}
+		AND a.zbskKeywordType = 1
+		group BY a.zbskKeywordType;
+	</select>
+	
+	<update id="updateSetting">
+		UPDATE zbspSpace SET 
+			zbspName = #{zbspName}
+			,zbspStartDate = #{zbspStartDate}
+		    ,zbspEndDate = #{zbspEndDate}
+		WHERE 1=1
+		AND zbspSeq = #{zbspSeq}
+</update>
+</mapper>

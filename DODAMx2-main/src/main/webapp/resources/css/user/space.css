@@ -1,0 +1,487 @@
+@font-face {
+font-family: 'SUIT-Medium';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+font-weight: normal;
+font-style: normal;
+}
+* {
+    box-sizing: border-box;
+    font-family: 'SUIT-Medium';
+    margin: 0;
+    padding: 0;
+} 
+img {
+    max-width: 100%;
+} 
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+body{
+	height: 100%;    
+}
+
+
+/* 헤더영역 s */
+
+.header{
+    height: 50px;
+    display: flex;
+    background: #191970;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-logo a{
+    font-size: 1.4rem;
+    margin-left: 14px;
+    color: #fff;
+}
+.spname{
+	color:tomato;
+	font-size:0.8rem;
+	margin-left:15px;	
+}
+.userwrap{
+    border: 1px solid;
+}
+.header-userlist{
+    display: none;
+    background: red;
+    position: relative;
+}
+.header-userbox{
+    display: flex;
+    align-items: center;
+    background: #fafafa;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.user_count{
+    font-size: 14px;
+    color: #01579b;
+}
+.user-img {
+    width: 30px;
+    height: 30px;   
+    border-radius: 50%;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+}
+.user-name {
+    font-size: 14px;
+    margin: 0 6px 0 12px;
+}/* 헤더영역 e */   
+/* 사이드바s */
+.sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background: #fafafa;
+}
+.sidebar-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 2px;
+    width: 100%;
+    height: 70px;
+}
+.info-space{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.info-dday{
+    font-size: 0.9rem;
+    color: tomato;
+}
+.side_menu_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+    font-size: 14px;
+    font-weight: lighter;
+}
+.side_menu_list li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+.side_menu_list li:hover{
+    background-color: #191970;
+    color: #fff;
+    cursor: pointer;
+}
+.side_menu_list h1{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-size: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.side_menu_list a{
+    text-decoration: none;
+    color: #000;
+}
+
+
+.user_profile{
+    margin: 50px auto 0px auto;
+    width: 80px;
+    height: 80px;
+    border-radius:50%;
+    overflow: hidden;
+}
+.user_name {
+    text-align: center;
+    font-size: 0.9rem;   
+}
+.user_name a{
+    color: #000; 
+}
+/* 메인영역 */
+.container {
+    width: 100%;
+    height: 94.5vh;
+    background-color: #fff;
+    display: flex;
+    overflow: hidden;
+}
+.table-Wrap{
+	width:100%;
+	display: flex;
+	justify-content: center;
+}
+
+.text-center{
+	width:100%;
+	height:100%;
+	font-weight:bold;
+	font-size:1.2rem;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 여행계획영역s*/
+.flag-Wrap{
+    width: 45%;
+}
+.flag-Wrap p{
+    text-align: center;
+    font-size: 0.8rem;
+    color: tomato;
+    font-weight: bold;
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+}
+.title h3{
+    text-align: center;
+}
+.titleimg{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+.titleimg img{
+    width: 100%;
+    height: 100%;
+}
+
+.sapaceInfo{
+    width: 60%;
+    height: 150px;
+    border-radius: 5px;
+    margin: 70px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+.space-profile{
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    margin-left: 15px;
+    border-radius: 50%;
+}
+.space-profile img{
+    width: 100%;
+    height: 100%;
+}
+.space-content{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    /* 조건문.. */
+.catagory_item1,.catagory_item2,.catagory_item3,.catagory_item4{
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+    border: 1px solid #bdbdbd;
+    border-radius: 50%;
+    background: #fff;
+    margin: 0 15px;
+}
+.catagory_item img{
+    width: 100%;
+    height: 100%;
+}
+.spaceFlag{
+    width: 60%;
+    height: 500px;
+    margin: auto;
+    list-style: none;
+    padding-left: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+.spaceFlag-nav{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    background: #eeeeee;
+    align-items: center;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+}
+.spaceFlag-main{
+    height: 85%;
+    margin-bottom: 5px;
+    overflow: auto;
+}
+.spaceFlag-nav button{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 10px;
+    background: #fff;
+}
+/* 여행기록 */
+.memory-Wrap{
+    width: 45%;
+}
+.memorytitle{
+    width: 77%;
+}
+.memory-Wrap p{
+    text-align: center;
+    font-size: 0.8rem;
+    color: tomato;
+    font-weight: bold;
+}
+.memory-box{
+    width: 77%;
+    height: 723px;
+    margin-right: auto;
+    list-style: none;
+    padding-left: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+.memory-nav{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    background: #eeeeee;
+    align-items: center;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 0;
+}
+.memory-nav button{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 10px;
+    background: #fff;
+}
+
+/* 공통영역 */
+/* 계획,기록에 들어가는 리스트 목록 */
+.item{
+    width: 80%;
+    height: 70px;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}   
+/* .item:hover{
+    background: #bbdefb;
+    border: 3px solid #212121;
+    color: #000;
+    font-weight: bold;
+} */
+.item_category_wrap{
+    display: flex;
+}
+.item_category_wrap li{
+    margin-left: 10px;
+}
+.item_category{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+}
+.item_category img{
+    width: 100%;
+    height: 100%;
+}
+.item_map{
+    padding-left: 10px;
+    line-height:1.5;
+}
+
+
+/* 멤버리스트 모달영역s */
+.memberList-modal {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+.modalBox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+.memberList-modal-content {
+    width: 30%;
+    height: 80%;
+    background-color: #fff;
+    padding: 20px;
+    animation: scale 0.5s ease;
+    border-radius: 10px;
+    z-index: 10;
+}
+.modal-header h3{
+    display: inline-block;
+    font-size: 1.5rem;
+}
+.memberList-modal-body{
+    margin:25px auto;
+    border: 1px solid #e0e0e0;
+    height: 90%;
+    width: 80%;
+    overflow: auto;
+}
+.userBOX{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px;
+}
+.userBOXImg{
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.userBOXId{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.userBOXName{
+    font: .7rem;
+    margin-left: 15px;
+}
+
+#close-memberList-modal {
+    float: right;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: tomato;
+}
+@keyframes scale {
+    from {
+    transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+/* 멤버리스트 모달영역e */
+
+
+/* ----------반응형 max-widthL768px */
+@media(max-width:768px){
+    .sidebar{
+        display: none;
+    }
+    .container{
+        flex-direction: column;
+        height: 2000px;
+    }
+    .flag-Wrap{
+        width: 100%;
+    }
+    .sapaceInfo{
+        width: 90%;
+    }
+    .spaceFlag{
+        width: 90%;
+    }
+    .memory-Wrap{
+        width: 100%;
+    }
+    .memorytitle{
+        width: 100%;
+    }
+    .memory-box{
+        width: 90%;
+        margin: auto;
+        margin-bottom: 25px;
+    }
+    .memberList-modal-content{
+        width: 90%;
+    }
+
+    html{
+    	height: 100%;
+    }
+}

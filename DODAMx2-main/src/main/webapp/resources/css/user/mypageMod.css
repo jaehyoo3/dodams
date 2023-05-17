@@ -1,0 +1,208 @@
+/* 공통 */
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+* {
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'SUIT-Medium';
+    margin: 0;
+}
+ul{
+    padding-left: 0;
+}
+li{
+    list-style: none;
+}
+a{
+	text-decoration: none;
+    color: #000;
+}
+
+
+/* nav s */    
+.navbar{
+    height: 70px;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    background: #fafafa;
+    margin: 2px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar__logo a{
+    font-size: 40px;
+    font-weight: 900;
+    margin-left: 200px;
+    color: #130d08;
+}
+.navbar__menu{
+    display: flex;
+    margin-right:200px;
+    font-size: 18px;
+}
+.navbar__menu li{
+    margin-left: 35px;
+    font-weight: 450;
+    cursor: pointer;
+}
+.navbar__menu a{
+    color: #000;
+}
+.navbar__toogleBtn{
+    display: none;
+}
+
+    /* 배너화면 */    
+.background{
+    height: 300px;
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* input영역 */
+ .main-container {
+            width: 30%;
+            margin: auto;
+        } 
+        .main-container .account-wrap {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+        } 
+        .information-font {
+            font-size: 12px;
+            font-weight: bold;
+            color:#4A4A4A;
+        }
+        .description-font {
+            font-size: 12px;
+            font-weight: bold;
+            color:#959595;
+        }
+        #profile{
+            display: none;
+        }
+        .profileImg {
+            border: 1px solid #e0e0e0;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin: auto;
+        } 
+
+        .account-wrap hr {
+            border:0;
+            height: 1px;
+            background-color: #e0e0e0;
+        } 
+        .account-wrap ul {
+            display: flex;
+            justify-content:space-between;
+            padding-left: 0;
+            margin-bottom: 20px;
+        } 
+        .account-wrap li {
+            list-style: none;
+        } 
+        .main-text-Font {
+            font-size: 16px;
+        } 
+        .information-text-Font{
+            font-size: 16px;
+            color: blue;
+        }
+        .input-wrap{
+            display: flex;
+            align-items: center;
+        }
+        .input-item{
+            height: 30px;
+            border:none;
+            color: #2979ff;
+            text-align: center;
+        }
+		.input-menu{
+			display: flex;
+			justify-content: center;
+			
+		}
+		.profile-label{
+			border:1px solid #e0e0e0;
+			padding:5px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.btn{
+			width:70px;
+			height: 35px;
+			border:1px solid #e0e0e0;
+			background: #fff;
+			border-radius: 5px;
+		}
+
+
+/* 제일 작은사이즈 : 768px이하 */
+        @media (max-width:768px){
+            .navbar{
+                height: auto;
+                flex-direction: column;
+                align-items: flex-start;
+                align-items: center;
+                margin: 0;
+                padding: 8px 24px;
+            }
+            .navbar__logo a{
+            margin-left: 0;
+            }
+            .navbar__menu{
+                display: none;
+                margin-right: 0;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            .navbar__menu li{
+                margin-left: 0%;
+                width: 100%;
+                font-size: 1.5rem;
+                padding: 8px 12px;
+                text-align: center;
+                cursor: pointer;
+            }
+            .navbar__menu li:hover{
+                background: #130d08;
+                border-radius: 15px;
+                color: #fff;
+                cursor: pointer;
+            }
+            .hiddenMeun i{
+                display: block;
+                font-size: 30px;
+            }
+            .navbar__toogleBtn{
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 32px;
+                font-size: 28px;
+                color: #000;
+            }
+            .navbar__menu.active{
+                display: flex;
+            }
+		}
+
+ 

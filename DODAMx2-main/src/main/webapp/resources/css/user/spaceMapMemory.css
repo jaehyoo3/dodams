@@ -1,0 +1,295 @@
+/* radio */
+.radio {
+  margin: 0.5rem;
+}
+.radio input[type=radio] {
+  position: absolute;
+  opacity: 0;
+}
+.radio input[type=radio] + .radio-label:before {
+  content: "";
+  background: #f4f4f4;
+  border-radius: 100%;
+  border: 1px solid #b4b4b4;
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  position: relative;
+  top: -0.2em;
+  margin-right: 1em;
+  vertical-align: bottom;
+  cursor: pointer;
+  text-align: center;
+  transition: all 250ms ease;
+}
+.radio input[type=radio]:checked + .radio-label:before {
+  background-color: #FF4A4A;
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+}
+.radio input[type=radio]:focus + .radio-label:before {
+  outline: none;
+  border-color: #FF4A4A;
+}
+.radio input[type=radio]:disabled + .radio-label:before {
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+  border-color: #b4b4b4;
+  background: #b4b4b4;
+}
+.radio input[type=radio] + .radio-label:empty:before {
+  margin-right: 0;
+}
+
+/*  */
+		@font-face {
+	    font-family: 'SUIT-Medium';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	*{
+	    font-family: 'SUIT-Medium';
+	}
+div{
+	display: inline-block;
+}
+.disIn{
+	display: inline-block;
+}
+.wP{
+	width: 100%;
+}
+        * {
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'SUIT-Medium';
+        } 
+        img {
+            max-width: 100%;
+        } 
+        li{
+            list-style: none;
+        }
+        body {
+            background-color:gray;
+        } 
+        a{
+            text-decoration: none;
+        }
+        hr{
+            background:#eeeeee;
+            height:1px;
+            border:0;
+            margin-bottom: 30px;
+        }
+        .addr{
+            color: tomato;
+        }
+        .containers {
+            width: 100%;
+            height: 1000px;
+            background-color: #fff;
+            display: flex;
+            overflow: hidden;
+            border-radius: 20px;
+            font-size: 15px;
+            border: 3px solid #424242;
+        } 
+        .sidebar {
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #000;
+            background: #fff;
+        }
+        .sidebar_logo {
+            margin-left: 30px;
+            margin-top: 15px;
+            text-decoration: none;
+            width: 150px;
+            height: 50px;
+            overflow: hidden;
+        }
+        .sidebar_logo img{
+            width: 100%;
+            height: 100%;
+        }
+        .side_menu_list{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding-left: 0;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+        .side_menu p{
+            margin: 40px 0px 0px 0px;
+            font-size: 8px
+        }
+        .menuWrap{
+            float: left ;
+        }
+        .side_menu_list p{
+            font-weight: bold;
+            font-size: 8px;
+        }
+        .side_menu_list a{
+            text-decoration: none;
+            color: #000;
+        }
+        .menu_btn{
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+        }
+        .menu_btn a{
+            color: #000;
+        }
+
+
+        .setting-wrap{
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #fff;
+            background: #000;
+        }
+        .fontwrap{
+            display: flex;
+        }
+        .fontwrap p{
+            margin-left: 15px;
+        }
+        .user_profile{
+            margin: 50px auto 0px auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #e0e0e0;
+            border-radius:50%;
+            overflow: hidden;
+        }
+        .profile-img{
+            width: 100%;
+            height: 100%;
+        }
+        .menu_item{
+            width: 218px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu_item:hover{
+            background: #000;
+            color: #fff;
+        }
+
+        .space_wrap {
+            display: flex;
+            width: 13%;
+            height: 50px;
+            border: 1px solid #000;
+            background: #fff;
+            border-radius: 15px;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: auto;
+            color: #000;
+        }
+        .user_count{
+            font-size: 14px;
+            color: #01579b;
+        }
+        .user-img {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .user-name {
+            font-size: 14px;
+            margin: 0 6px 0 12px;
+        }
+        
+        .body{
+		margin-left:3%;
+		margin-top:4%;
+         width: 94%;
+         height: 80%;
+        }
+        .map{
+        	width: 49%;
+        	height: 90%;
+        	display:inline-block;
+        }
+        .mapTitle{
+        	width: 70%;
+        	height: 10%;
+        	margin-left:15%;
+        }
+        .TitleDetail{
+       	 font-size: 20px;
+       	 font-weight: 600;
+        }
+        .mapReg{	
+        	float: right;
+        	width: 49%;
+        	height: 90%;
+        	display:inline-block;
+        	margin-left: 1.5%;
+        }
+        
+        .mapRegTitle{
+        	width: 70%;
+        	height: 10%;
+        }
+        .mapDetail{
+        	width: 70%;
+        	height: 70%;
+        	margin-left:15%;
+        	margin-top:3%;
+        	background-color: gray;
+        }
+        .mapRegDetail{
+       	 	width: 90%;
+        	height: 70%;
+        	margin-top:3%;
+        }
+        .box{
+         width: 194px;
+         height: 40px;
+        }
+        .textBox{
+        	width: 400px;
+        	height: 40px;
+        }
+        .textBoxTwo{
+        	width: 300px;
+        	height: 40px;
+        }
+        .btnBox{
+         width: 80px;
+         height: 40px;
+         margin-left: 10px;
+        }
+        .regBtn{
+        	width: 200px;
+        	height: 40px;
+        }
+        /*____________________________ */

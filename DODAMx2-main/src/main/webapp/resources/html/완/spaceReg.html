@@ -1,0 +1,652 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="uTF-8"> 
+		<meta name ="viewport" content="width=device-width, initial-scaLe=1.0">
+		<title>DODAMDODAM</title>
+		<style type="text/css">
+		@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+        * {
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'SUIT-Medium';
+        } 
+        img {
+            max-width: 100%;
+        } 
+        li{
+            list-style: none;
+        }
+        body {
+            background-color:gray;
+        } 
+        a{
+            text-decoration: none;
+        }
+        hr{
+            background:#eeeeee;
+            height:1px;
+            border:0;
+        }
+        h4{
+            color: #000;
+        }
+        p{
+            margin: 0;
+        }
+        .addr{
+            color: tomato;
+        }
+        .container {
+            width: 100%;
+            height: 1000px;
+            background-color: #fff;
+            display: flex;
+            overflow: hidden;
+            border-radius: 3px;
+            font-size: 15px;
+        }
+        .sidebar {
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #000;
+            background: #fff;
+        }
+        .sidebar_logo {
+            margin-left: 30px;
+            margin-top: 15px;
+            text-decoration: none;
+            width: 150px;
+            height: 50px;
+            overflow: hidden;
+        }
+        .sidebar_logo img{
+            width: 100%;
+            height: 100%;
+        }
+        .side_menu_list{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding-left: 0;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+        .side_menu p{
+            margin: 40px 0px 0px 0px;
+            font-size: 8px;
+            color:#bdbdbd;
+        }
+        .menuWrap{
+            float: left ;
+        }
+        .side_menu_list p{
+            font-weight: bold;
+            font-size: 8px;
+        }
+        .side_menu_list a{
+            text-decoration: none;
+            color: #000;
+        }
+        .menu_btn{
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+        }
+        .menu_btn a{
+            color: #000;
+        }
+        .setting-wrap{
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #fff;
+            background: #000;
+        }
+        .fontwrap{
+            display: flex;
+        }
+        .fontwrap p{
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+        .user_profile{
+            margin: 50px auto 0px auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #e0e0e0;
+            border-radius:50%;
+            overflow: hidden;
+        }
+        .profile-img{
+            width: 100%;
+            height: 100%;
+        }
+        .menu_item{
+            width: 218px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu_item:hover{
+            background: #000;
+            color: #fff;
+        }
+        .space_wrap {
+            display: flex;
+            width: 13%;
+            height: 50px;
+            border: 1px solid #000;
+            background: #fff;
+            border-radius: 15px;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: auto;
+            color: #000;
+        }
+        .user_count{
+            font-size: 14px;
+            color: #01579b;
+        }
+        .user-img {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .user-name {
+            font-size: 14px;
+            margin: 0 6px 0 12px;
+        }
+        .main_Wrap{
+            display: flex;
+            width: 100%;
+            height: 100%;
+
+        }
+        .inputbox{
+            width: 60%;
+            height: 100%;
+            margin: auto;
+            background: #fff;
+            overflow: auto;
+        }
+        .dateWrap{
+            width: 90%;
+            margin:30px auto 0px auto;
+            text-align: center;
+        }
+        .dateWrap p{
+            font-size: 24px;
+            margin: 0;
+        }
+        .dateinput{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            margin-bottom: 30px;
+            padding-left: 0;
+        }
+        .dateinput input[type=text]{
+            width: 120px;
+            height: 35px;
+            text-align: center;
+            border: 0;
+            margin: 15px;
+            border-bottom: 2px solid;
+        }
+        .dateinput input:focus{
+            border-bottom: 4px solid;
+        }
+        .keytitle{
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto 10 auto;
+        }
+        .keytitle h3 ,h4{
+            margin: 0px;
+        }
+        .keytitle h4{
+            font-size: 15px;
+            color: tomato;
+        }
+        .catagoryWrap{
+            width: 90%;
+            margin-top: 50px;
+            height: 150px;
+            border: 1px solid #e0e0e0;
+            margin: 0px auto 30px auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-left: 0;
+        }
+        
+        .itemown{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            background: tomato;   
+        }
+        .friendWrap{
+            width: 90%;
+            height: 150px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            margin: 0px auto 30px auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-left: 0;
+            
+
+        }
+        .friend_items{
+            width: 10%;
+            height: 40px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            margin: 5px;
+        }
+
+        .addr_area{
+            width: 90%;
+            height: 150px;
+            border: 1px solid #000;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+        #open-modal {
+            border: none;
+            background-color: #000;
+            border-radius: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            user-select: none;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #open-modal:hover {
+            background-color: #eeeeee;
+            color: #000;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-content {
+            margin: 20% auto;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            animation: scale 0.5s ease;
+            border-radius: 10px;
+            box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02),
+            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),
+            100px 100px 80px rgba(0, 0, 0, 0.05);
+        }
+        
+        .modal-body {
+            margin-top: 5px;
+        }
+        .modal-list{
+            display: flex;
+            list-style: none;
+            margin: 5px;
+        }
+        .modal-list button{
+            width: 60px;
+            height: 45px;
+            font-size: 1.5rem;
+            margin-left: 15px;
+            border-radius: 5px;
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+        .modal-list button:hover{
+            background: #212121;
+            color:#fafafa;
+        }
+        #close-modal {
+            float: right;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: red;
+        }
+        @keyframes scale {
+            from {
+            transform: scale(0);
+            }
+        
+            to {
+                transform: scale(1);
+            }
+        }
+        .inputId{
+            width: 80%;
+            height: 30px;
+        }
+        .area_wrap{
+            width: 90%;
+            height: 150px;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            margin: 0px auto 30px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding-left: 0;
+        }
+        .area_wrap li{
+            width: 90px;
+            height: 30px;
+            border-radius: 15px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+        }
+        .listTop{
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+        }
+        .listdown{
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+        }
+        .btnList{
+            width: 90%;
+            text-align: center;
+            margin: auto;
+        }
+        .btnList button{
+            width: 150px;
+            height: 35px;
+            border:none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .toggle3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-left: 0;
+            
+        }
+        .addrLabel{
+            width: 150px;
+            height: 150px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        .toggle3 input[type=checkbox]{
+            display: none;
+        }
+        .toggle3 input[type=checkbox] + label {
+            font-size: 1em;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            color: #000;
+            border-radius: 15px;
+            width: 100px;
+            height: 30px;
+            border: 1px solid e0e0e0;
+            margin: 5px;
+            
+        }
+        .toggle3 input[type=checkbox]:checked + label {
+            color: #fff;
+            background: tomato;
+            
+        }
+		</style>
+	</head>
+	<body>
+	<form>
+		<div class="container">
+            <div class="sidebar">
+                <div class="sidebar_logo">
+                    <a href="#"><img src="/AirLanguage/img/DODAMx2_LOGO-removebg-preview.png" alt=""></a>
+                </div>
+                <div class="side_menu">
+                    <ul class="side_menu_list">
+                        <li class="user_profile">
+                            <img class="profile-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                        </li>
+                        <li><a href="#">아이디 영역</a></li>
+                    </ul>    
+                    <p>MENU</p>
+                    <hr>
+                    <ul class="menu_btn">
+                        <a href="#"><li class="menu_item">HOME</li></a>
+                        <a href="#"><li class="menu_item">CHATTIGN</li></a>
+                        <a href="#"><li class="menu_item">MAP</li></a>
+                        <a href="#"><li class="menu_item">ZOOM</li></a>
+                    </ul>
+                    <div class="side_menu_footer">
+                        <a href="">Setting</a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="header">
+                    <div class="fontwrap">
+                        <p>워크스페이스 생성</p>
+                    </div>
+                </div>
+                <div class="main_Wrap">
+                    <div class="inputbox">
+                        <div class="dateWrap">
+                            <p>기간을 입력 해 주세요 </p>
+                            <ul class="dateinput">
+                                <li><input type="text" id="startDate"></li>
+                                ~
+                                <li><input type="text" id="endDate"></li>
+                                <li>또는 당일여행<input type="checkbox" name="" id=""></li>
+                            </ul>    
+                        </div>
+                            <p class="keytitle">여행테마를 선택해보세요</p>
+                        <ul class="catagoryWrap">
+                            <li class="itemown"></li>
+                            <li class="itemown"></li>
+                            <li class="itemown"></li>
+                            <li class="itemown"> </li>
+                        </ul>
+                        <div class="keytitle">
+                            <p>친구를 초대 해 보세요<button type="button" id="open-modal">+</button></p>
+                        </div>
+                        <ul class="friendWrap">
+                            <li class="friend_items">아이디1</li>
+                            <li class="friend_items">아이디1</li>
+                            <li class="friend_items">아이디1</li>
+                            <li class="friend_items">아이디1</li>
+                            
+
+                        </ul>
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3>친구초대</h3>
+                                        
+                                        <span id="close-modal">&times;</span>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="modal-list">
+                                            <input class="inputId" type="text">
+                                        </ul>
+                                    </div>
+                                    <div class="modal_footer"></div>
+                                    <li><button><i class="fa-solid fa-images"></i></button></li>
+                                </div>
+                            </div>
+                        
+                        <div class="keytitle">
+                            <h3>지역선택</h3>
+                            <h4>최대 두 지역 까지 선택 가능합니다</h4>
+                        </div>
+                        <div class="area_wrap">
+                            <div class="toggle3">
+                                    <input type="checkbox" id="toggle3-1"name="addr" value="gido" >
+                                    <label class="addrLabel"for="toggle3-1">경기</label>
+                                    <input type="checkbox" id="toggle3-2"name="addr" value="1">
+                                    <label class="addrLabel"for="toggle3-2">서울</label>           
+                                    <input type="checkbox" id="toggle3-3"name="addr" value="2">
+                                    <label class="addrLabel"for="toggle3-3">강원</label>
+                                    <input type="checkbox" id="toggle3-4"name="addr" value="3">
+                                    <label class="addrLabel"for="toggle3-4">충북</label>
+                                    <input type="checkbox" id="toggle3-5"name="addr" value="4">
+                                    <label class="addrLabel"for="toggle3-5">충남</label>
+                                    <input type="checkbox" id="toggle3-6"name="addr" value="seoul">
+                                    <label class="addrLabel"for="toggle3-6">경북</label>
+                                    <input type="checkbox" id="toggle3-7"name="addr" value="seoul">
+                                    <label class="addrLabel"for="toggle3-7">경남</label>
+                            </div>
+                            <ul class="toggle3">
+                                <input type="checkbox" id="toggle3-8"name="addr" value="gido">
+                                <label class="addrLabel"for="toggle3-8">인천</label>
+
+                                <input type="checkbox" id="toggle3-9"name="addr[]" value="s">
+                                <label class="addrLabel"for="toggle3-9">전북</label>  
+
+                                <input type="checkbox" id="toggle3-10"name="addr[]" value="seoul">
+                                <label class="addrLabel"for="toggle3-10">전남</label>
+
+                                <input type="checkbox" id="toggle3-11"name="addr[]" value="seoul">
+                                <label class="addrLabel"for="toggle3-11">부산</label>
+                                <input type="checkbox" id="toggle3-12"name="addr[]" value="9">
+                                <label class="addrLabel"for="toggle3-12">대전</label>
+                                <input type="checkbox" id="toggle3-13"name="addr[]" value="7">
+                                <label class="addrLabel"for="toggle3-13">대구</label>
+                                <input type="checkbox" id="toggle3-14"name="addr[]" value="6">
+                                <label class="addrLabel"for="toggle3-14">제주</label>
+                        </ul>
+                        </div>
+                        <div class="btnList">
+                            <button type="submit">생성</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+            
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/a1961b2393.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+    	var tmpChkCnt = $(".addrLabel:checked").length;
+        console.log(tmpChkCnt);	// 3 (A,B,C)
+    });
+        const modal = document.querySelector(".modal");
+        const openModalBtn = document.querySelector("#open-modal");
+        const closeModalBtn = document.querySelector("#close-modal");
+        
+        openModalBtn.addEventListener("click", function () {
+        modal.style.display = "block";
+        });
+        
+        closeModalBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+        });
+
+        /* 달력 */
+    $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional['ko']);
+            $( "#startDate" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                nextText: '다음 달',
+                prevText: '이전 달',
+                dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                dateFormat: "yy-mm-dd",
+                 /* maxDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가) */
+                onClose: function( selectedDate ) {
+                      //시작일(startDate) datepicker가 닫힐때
+                      //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                    $("#endDate").datepicker( "option", "minDate", selectedDate );
+                }
+            });
+            $( "#endDate" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                nextText: '다음 달',
+                prevText: '이전 달',
+                dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                dateFormat: "yy-mm-dd",
+                 /* maxDate: 0,                       // 선택할수있는 최대날짜, ( 0 : 오늘 이후 날짜 선택 불가) */
+                onClose: function( selectedDate ) {
+                     // 종료일(endDate) datepicker가 닫힐때
+                     // 시작일(startDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 시작일로 지정
+                    $("#startDate").datepicker( "option", "maxDate", selectedDate );
+                }
+            });
+    });
+
+        </script>
+        
+</body>
+</html>

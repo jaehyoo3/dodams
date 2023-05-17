@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+	<mapper namespace="com.dodam.infra.modules.member.MemberMapper">
+
+    <resultMap id="resultMapObj" type="com.dodam.infra.modules.member.Member"></resultMap>
+    
+    <!--검색조건  -->
+    <sql id="selectCommon">
+    	<if test="startDate != null and !startDate.equals('') and endDate != null and !endDate.equals('')">
+			AND a.zbmmRegDate BETWEEN #{startDate} AND #{endDate}
+		</if>
+		<choose>
+			<when test="shDelNy == 2"></when>
+			<when test="shDelNy != null and !shDelNy.equals('')">AND a.zbmmDelNy = #{shDelNy}</when>
+		</choose>
+		<choose>
+			<when test="shOption == 1">AND a.zbmmSeq = #{shValue}</when>
+			<when test="shOption == 2">AND a.zbmmID LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND a.zbmmName LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+		<if test="zbmmSocialType != null and !zbmmSocialType.equals('')">AND a.zbmmSocialType = #{zbmmSocialType}</if>
+	</sql>
+    <!-- Login S-->
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT
+			zbmmSeq
+			,zbmmID
+		FROM
+			zbmmMember
+		WHERE 1=1
+			AND zbmmID = #{zbmmID}
+	</select>
+	
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			zbmmSeq
+			,zbmmID
+			,zbmmName
+		FROM
+			zbmmMember
+		WHERE 1=1
+			AND zbmmID = #{zbmmID}
+			<if test="zbmmPW != null and !zbmmPW.equals('')">and zbmmPW = #{zbmmPW}</if>
+	</select>
+	<!-- Login E -->
+	
+	<!--  SignUp S -->
+    <insert id="signUp">
+		INSERT INTO zbmmMember(
+			zbmmSeq
+	    	,zbmmID
+	    	,zbmmPW
+	    	,zbmmName
+	    	,zbmmEmail
+	    	,zbmmMobile
+	    	,zbmmRegDate
+	    	,zbmmDelNy
+	    	,zbmmDelDate
+	    	,zbmmSocialType
+		)
+		VALUES (
+			#{zbmmSeq}
+			,#{zbmmID}
+			,#{zbmmPW}
+			,#{zbmmName}
+			,#{zbmmEmail}
+			,#{zbmmMobile}
+			,NOW()
+			,0
+			,0
+			,0
+		)
+		<selectKey resultType="String" keyProperty="zbmmSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="selectOneIdCheck" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM zbmmMember 
+		WHERE 1=1 
+		AND zbmmID = #{zbmmID}
+	</select>
+	<!--  SignUp E -->
+    
+    <!-- 페이지네이션  -->
+    <sql id="selectListUpperForMysql">
+		select aa.* from (
+		</sql>
+	
+	
+		<sql id="selectListLowerForMysql">	
+			) aa
+			limit #{rowNumToShow} offset #{startRnumForMysql}
+		</sql>
+	    
+    <!--	관리자/멤버 리스트 	-->
+    <select id="selectList" resultMap="resultMapObj">
+    <include refid="selectListUpperForMysql" />
+    	SELECT
+    		a.zbmmSeq
+    		,a.zbmmID
+    		,a.zbmmName
+    		,a.zbmmEmail
+    		,a.zbmmMobile
+    		,a.zbmmRegDate
+    		,a.zbmmDelNy
+    		,a.zbmmSocialType
+    	FROM zbmmMember a
+    	WHERE 1=1 
+    	<include refid="selectCommon"/>
+    	ORDER BY a.zbmmSeq DESC
+    	<include refid="selectListLowerForMysql" />
+    </select>
+    
+    <!-- 관리자/셀렉트원  -->
+   	<select id="selectOne" resultMap="resultMapObj">
+   		SELECT
+    		a.zbmmSeq
+    		,a.zbmmID
+    		,a.zbmmName
+    		,a.zbmmPW
+    		,a.zbmmEmail
+    		,a.zbmmMobile
+    		,a.zbmmRegDate
+    		,a.zbmmDelNy
+    		,a.zbmmSocialType
+    	FROM zbmmMember a
+    	<include refid="selectCommon"/>
+    	WHERE 1=1
+    		AND a.zbmmSeq = #{zbmmSeq}
+   	</select>
+    
+    <!--페이지네이션 카운트   -->
+    <select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM zbmmMember a
+		WHERE 1=1
+		<include refid="selectCommon"/>
+	</select>
+    
+    
+    <!-- 관리자/INSERT -->
+   <insert id="memberInst">
+		INSERT INTO zbmmMember(
+			zbmmID
+			,zbmmName
+			,zbmmEmail
+			,zbmmMobile
+			,zbmmRegDate
+			,zbmmDelNy
+			,zbmmSocialType
+			)
+			VALUE(
+			#{zbmmID}
+			,#{zbmmName}
+			,#{zbmmEmail}
+			,#{zbmmMobile}
+			,now()
+			,0
+			,#{zbmmSocialType}
+			)
+		<selectKey resultType="String" keyProperty="zbmmSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+  	</insert>
+    <!-- 관리자/업데이트 -->
+	<update id="update">
+		UPDATE zbmmMember
+		SET
+			zbmmID = #{zbmmID}
+			,zbmmName = #{zbmmName}
+			,zbmmPW = #{zbmmPW}
+			,zbmmEmail = #{zbmmEmail}
+			,zbmmMobile = #{zbmmMobile}
+		WHERE 1=1
+			AND zbmmSeq = #{zbmmSeq}	
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM zbmmMember WHERE zbmmSeq = #{zbmmSeq}
+	</delete>
+	
+	<update id="uelete">
+		UPDATE zbmmMember
+		SET
+			delNy = 1
+		WHERE zbmmSeq = #{zbmmSeq}
+	</update>
+	
+<!-- sns 로그인 -->
+	
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		SELECT
+			zbmmseq
+			,zbmmID
+		    ,zbmmName
+			,zbmmEmail
+			,zbmmMobile
+			,zbmmSocialType
+		FROM zbmmMember
+		WHERE 1=1 
+		AND zbmmSocialType != 0	
+		AND zbmmSocialType = #{zbmmSocialType}
+		AND zbmmEmail = #{zbmmEmail}
+	</select>
+	
+	<insert id="snsInst">
+		INSERT INTO zbmmMember(
+			zbmmID
+		    ,zbmmName
+			,zbmmEmail
+			,zbmmMobile
+			,zbmmSocialType
+			,zbmmRegDate
+			,zbmmDelNy
+		)
+		
+		VALUES (
+			#{zbmmID}
+			,#{zbmmName}
+			,#{zbmmEmail}
+			,#{zbmmMobile}
+			,#{zbmmSocialType}
+			,NOW()
+			,0
+		)
+		<selectKey resultType="String" keyProperty="zbmmSeq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="selectOneEmailCheck" resultType="Integer">
+		SELECT 
+			COUNT(zbmmSeq) 
+		FROM zbmmMember 
+		WHERE 1=1 
+		AND zbmmSocialType = 0	
+		AND zbmmEmail = #{zbmmEmail}
+	</select>
+	
+	<select id="selectOneFind" resultMap="resultMapObj">
+		SELECT
+			zbmmseq
+			,zbmmId
+		    ,zbmmName
+			,zbmmEmail
+			,zbmmMobile
+			,zbmmSocialType
+		FROM zbmmMember
+		WHERE 1=1 
+		AND zbmmEmail = #{zbmmEmail}
+	</select>
+	
+	<update id="pwChange">
+		UPDATE zbmmMember
+		SET zbmmPW = #{zbmmPW}
+		WHERE 1=1
+		AND zbmmEmail = #{zbmmEmail}
+	</update>
+</mapper>

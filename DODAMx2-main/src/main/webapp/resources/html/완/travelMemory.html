@@ -1,0 +1,405 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="uTF-8"> 
+		<meta name ="viewport" content="width=device-width, initial-scaLe=1.0">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/haha.css">
+		<title>regform</title>
+		<!-- Datepicker -->
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	</head>
+	<style>
+/* radio */
+.radio {
+  margin: 0.5rem;
+}
+.radio input[type=radio] {
+  position: absolute;
+  opacity: 0;
+}
+.radio input[type=radio] + .radio-label:before {
+  content: "";
+  background: #f4f4f4;
+  border-radius: 100%;
+  border: 1px solid #b4b4b4;
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  position: relative;
+  top: -0.2em;
+  margin-right: 1em;
+  vertical-align: bottom;
+  cursor: pointer;
+  text-align: center;
+  transition: all 250ms ease;
+}
+.radio input[type=radio]:checked + .radio-label:before {
+  background-color: #FF4A4A;
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+}
+.radio input[type=radio]:focus + .radio-label:before {
+  outline: none;
+  border-color: #FF4A4A;
+}
+.radio input[type=radio]:disabled + .radio-label:before {
+  box-shadow: inset 0 0 0 4px #f4f4f4;
+  border-color: #b4b4b4;
+  background: #b4b4b4;
+}
+.radio input[type=radio] + .radio-label:empty:before {
+  margin-right: 0;
+}
+
+/*  */
+		@font-face {
+	    font-family: 'SUIT-Medium';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	*{
+	    font-family: 'SUIT-Medium';
+	}
+div{
+	display: inline-block;
+}
+.disIn{
+	display: inline-block;
+}
+.wP{
+	width: 100%;
+}
+        * {
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'SUIT-Medium';
+        } 
+        img {
+            max-width: 100%;
+        } 
+        li{
+            list-style: none;
+        }
+        body {
+            background-color:gray;
+        } 
+        a{
+            text-decoration: none;
+        }
+        hr{
+            background:#eeeeee;
+            height:1px;
+            border:0;
+            margin-bottom: 30px;
+        }
+        .addr{
+            color: tomato;
+        }
+        .containers {
+            width: 100%;
+            height: 1000px;
+            background-color: #fff;
+            display: flex;
+            overflow: hidden;
+            border-radius: 20px;
+            font-size: 15px;
+            border: 3px solid #424242;
+        } 
+        .sidebar {
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #000;
+            background: #fff;
+        }
+        .sidebar_logo {
+            margin-left: 30px;
+            margin-top: 15px;
+            text-decoration: none;
+            width: 150px;
+            height: 50px;
+            overflow: hidden;
+        }
+        .sidebar_logo img{
+            width: 100%;
+            height: 100%;
+        }
+        .side_menu_list{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding-left: 0;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+        .side_menu p{
+            margin: 40px 0px 0px 0px;
+            font-size: 8px
+        }
+        .menuWrap{
+            float: left ;
+        }
+        .side_menu_list p{
+            font-weight: bold;
+            font-size: 8px;
+        }
+        .side_menu_list a{
+            text-decoration: none;
+            color: #000;
+        }
+        .menu_btn{
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+        }
+        .menu_btn a{
+            color: #000;
+        }
+
+
+        .setting-wrap{
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #fff;
+            background: #000;
+        }
+        .fontwrap{
+            display: flex;
+        }
+        .fontwrap p{
+            margin-left: 15px;
+        }
+        .user_profile{
+            margin: 50px auto 0px auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #e0e0e0;
+            border-radius:50%;
+            overflow: hidden;
+        }
+        .profile-img{
+            width: 100%;
+            height: 100%;
+        }
+        .menu_item{
+            width: 218px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu_item:hover{
+            background: #000;
+            color: #fff;
+        }
+
+        .space_wrap {
+            display: flex;
+            width: 13%;
+            height: 50px;
+            border: 1px solid #000;
+            background: #fff;
+            border-radius: 15px;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: auto;
+            color: #000;
+        }
+        .user_count{
+            font-size: 14px;
+            color: #01579b;
+        }
+        .user-img {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .user-name {
+            font-size: 14px;
+            margin: 0 6px 0 12px;
+        }
+        
+        .body{
+		margin-left:3%;
+		margin-top:4%;
+         width: 94%;
+         height: 80%;
+        }
+        .map{
+        	width: 49%;
+        	height: 90%;
+        	display:inline-block;
+        }
+        .mapTitle{
+        	width: 70%;
+        	height: 10%;
+        	margin-left:15%;
+        }
+        .TitleDetail{
+       	 font-size: 20px;
+       	 font-weight: 600;
+        }
+        .mapReg{	
+        	float: right;
+        	width: 49%;
+        	height: 90%;
+        	display:inline-block;
+        	margin-left: 1.5%;
+        }
+        
+        .mapRegTitle{
+        	width: 70%;
+        	height: 10%;
+        }
+        .mapDetail{
+        	width: 70%;
+        	height: 70%;
+        	margin-left:15%;
+        	margin-top:3%;
+        	background-color: gray;
+        }
+        .mapRegDetail{
+       	 	width: 90%;
+        	height: 70%;
+        	margin-top:3%;
+        }
+        .box{
+         width: 194px;
+         height: 40px;
+        }
+        .textBox{
+        	width: 400px;
+        	height: 40px;
+        }
+        .textBoxTwo{
+        	width: 300px;
+        	height: 40px;
+        }
+        .btnBox{
+         width: 80px;
+         height: 40px;
+         margin-left: 10px;
+        }
+        .regBtn{
+        	width: 200px;
+        	height: 40px;
+        }
+        /*____________________________ */
+	</style>
+	<body>
+	<form>
+		<div class="containers">
+            <div class="sidebar">
+                <div class="sidebar_logo">
+                    <a href="#"><img src="/AirLanguage/img/DODAMx2_LOGO-removebg-preview.png" alt=""></a>
+                </div>
+                <div class="side_menu">
+                    <ul class="side_menu_list">
+                        <li class="user_profile">
+                            <img class="profile-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                        </li>
+                        <li><a href="#">아이디 영역</a></li>
+                    </ul>    
+                    <p>MENU</p>
+                    <hr>
+                    <ul class="menu_btn">
+                        <a href="#"><li class="menu_item">HOME</li></a>
+                        <a href="#"><li class="menu_item">CHATTIGN</li></a>
+                        <a href="#"><li class="menu_item">MAP</li></a>
+                        <a href="#"><li class="menu_item">ZOOM</li></a>
+                    </ul>
+                    <div class="side_menu_footer">
+                        <a href="">Setting</a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="header">
+                    <div class="fontwrap">
+                        <p>TEST WorkSpace</p>
+                        <p>D-19일</p>
+                    </div>
+                    <div class="space_wrap">
+                        <img class="user-img" src="https://cdn-icons-png.flaticon.com/512/3659/3659904.png" alt="">
+                        <div class="user-name">스페이스 회원수</div>
+                        <div class="user_count">10명</div>
+                    </div>
+                </div>
+                <div class="body">
+                	<div class="map">
+                		<div class="mapTitle"><p class="TitleDetail">여행깃발</p></div>
+                		<div class="mapDetail"></div>
+                	</div>
+                	<div class="mapReg">
+                		<div class="mapRegTitle"><p class="TitleDetail">여행깃발등록(추억)</p></div>
+                		<div class="mapRegDetail">
+                			<div class="wP mb-4">
+	                			<input type="date" class="disIn box">
+                			</div>
+                			<div class="wP mb-4">
+                				<div class="radio">
+                					<input id="radio-1" name="radio" type="radio" checked>
+    								<label for="radio-1" class="radio-label">당일</label>
+    							</div>
+    							<div class="radio">
+    								<input id="radio-2" name="radio" type="radio" checked>
+    								<label for="radio-2" class="radio-label">기간지정</label>
+    							</div>
+                			</div>
+                			<div class="wP">
+                				<input type="text" id="inputPassword5" class="textBox form-control mb-3">
+                			</div>
+                			<div class="wP">
+                				<label for="inputPassword5" class="col-form-label"><p class="mb-0">장소 명</p></label>
+                				<input type="text" id="inputPassword5" class="textBox form-control mb-3">
+                			</div>
+                			<div class="wP mb-5">
+                				<label for="inputPassword5" class="col-form-label"><p class="mb-0">장소 주소</p></label><br>
+                				<input type="text" id="inputPassword5" class="textBoxTwo form-control disIn">
+                				<button type="button" class="btn btn-danger btnBox mb-1">검색	</button>
+                			</div>
+                			<!-- <div class="wP mb-5">
+                				<label for="inputPassword5" class="col-form-label"><p class="mb-0">상세 주소</p></label><br>
+                				<input type="text" id="inputPassword5" class="textBox form-control disIn">
+                			</div> -->
+                			<div class="wP">
+                				<button type="button" class="btn btn-secondary regBtn mb-3">삭제</button>
+                				<button type="button" class="btn btn-danger regBtn mb-3">등록</button>
+                			</div>
+                		</div>
+                	</div>
+                </div>
+            </div>
+        </div>        
+</form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a1961b2393.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</script>
+</body>
+</html>

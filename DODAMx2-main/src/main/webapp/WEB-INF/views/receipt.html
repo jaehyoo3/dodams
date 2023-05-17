@@ -1,0 +1,207 @@
+<!-- <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %> -->
+
+<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     -->
+<!-- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> -->
+<!-- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> -->
+<!-- <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %> -->
+<!-- <%@ page session="true" %> -->
+
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/resources/favicon/favicon.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+     
+    <style type="text/css">
+    
+    	.form__group {
+		  position: relative;
+		  padding: 15px 0 0;
+		  margin-top: 10px;
+		  width: 50%;
+		}
+		
+		.form__field {
+		  font-family: inherit;
+		  width: 100%;
+		  border: 0;
+		  border-bottom: 2px solid #9b9b9b;
+		  outline: 0;
+		  font-size: 1.3rem;
+		  color: #fff;
+		  padding: 7px 0;
+		  background: transparent;
+		  transition: border-color 0.2s;
+		}
+		.form__field::placeholder {
+		  color: transparent;
+		}
+		.form__field:placeholder-shown ~ .form__label {
+		  font-size: 1.3rem;
+		  cursor: text;
+		  top: 20px;
+		}
+		
+		.form__label {
+		  position: absolute;
+		  top: 0;
+		  display: block;
+		  transition: 0.2s;
+		  font-size: 1rem;
+		  color: #9b9b9b;
+		  left: 50%;
+   		  transform: translate(-50%, 0);
+		}
+		
+		.form__field:focus {
+		  padding-bottom: 6px;
+		  font-weight: 700;
+		  border-width: 3px;
+		  border-image: linear-gradient(to right, #11998e, #38ef7d);
+		  border-image-slice: 1;
+		}
+		.form__field:focus ~ .form__label {
+		  position: absolute;
+		  top: 0;
+		  display: block;
+		  transition: 0.2s;
+		  font-size: 1rem;
+		  color: #11998e;
+		  font-weight: 700;
+		}
+		
+		/* reset input */
+		.form__field:required, .form__field:invalid {
+		  box-shadow: none;
+		  text-align: center;
+		}
+		
+		/* demo */
+		body {
+		  font-family: "Poppins", sans-serif;
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  min-height: 100vh;
+		  font-size: 1.5rem;
+		  background-color: #222222;
+		}
+		
+		p {
+		  font-family: "Poppins", sans-serif;
+		  font-size: 16px;
+		  color: #9b9b9b;
+		  
+		}
+		
+		i {
+		  color: #ffffff;
+		}
+		
+		.name{
+		  font-size: 24px;
+		}
+		
+		.cost{
+		  color: #ffffff;
+		  font-size:20px;
+		}
+		    
+    </style>
+     	
+</head>
+<body>
+
+<!-- start --> 
+
+
+
+
+		<div class="container py-5">
+    	  <div class="row d-flex justify-content-center align-items-center">
+          	<div class="form__group field">
+			  <input type="input" class="form__field" placeholder="Name" name="name" id='name' required />
+			  <label for="name" class="form__label">리스트 명을 입력하세요.</label>
+			</div>
+		  </div>
+		</div>
+			<br><br><br>
+			<div class="text-center">
+			  <p>어떤 곳에 사용했나요?</p>
+			</div>
+			<div class="card shadow-2-strong" style="border-radius: 1rem;">
+         	  <div class="row text-center">
+				<div class="col-3">
+				  <button class="btn btn-dark"><i class="fa-sharp fa-solid fa-car-side fa-2x"></i></button>
+				</div>
+				<div class="col-3">
+				  <button class="btn btn-dark"><i class="fa-solid fa-house fa-2x"></i></button>
+				</div>
+				<div class="col-3">
+				  <button class="btn btn-dark"><i class="fa-solid fa-utensils fa-2x"></i></button>
+				</div>
+				<div class="col-3">
+				  <button class="btn btn-dark"><i class="fa-solid fa-poo fa-2x"></i></button>
+				</div>
+			  </div>
+			</div>
+			<br><br><br>
+			<div class="text-center">
+			      <p>누구랑 사용했나요?</p>
+			</div>
+			<div class="card shadow-2-strong" style="border-radius: 1rem;">
+         	  <div class="card-body p-2 text-center">
+         	  	<div class="row">
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">장원영</span>
+         	  	  </div>
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">김태희</span>
+         	  	  </div>
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">김기율</span>
+         	  	  </div>
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">김찬중</span>
+         	  	  </div>
+         	  	</div>
+         	  	<br><br>
+         	  	<div class="row">
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">이규관</span>
+         	  	  </div>
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">신재효</span>
+         	  	  </div>
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">김진범</span>
+         	  	  </div>
+         	  	  <div class="col-3">
+         	  		<input type="checkbox"><span class="name">김승환</span>
+         	  	  </div>
+		      	</div>
+	   	      </div>
+	   	    </div>
+           	
+           	<br><br><br>
+           	<p class="cost">비용</p>
+            
+			
+					
+
+
+<!-- end -->
+
+<!-- <%@include file="./include/All/JSLink.jsp"%> -->
+
+<script src="https://kit.fontawesome.com/a1961b2393.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

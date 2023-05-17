@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+<mapper namespace="com.dodam.infra.modules.codegroup.CodeGroupMapper">
+
+    <resultMap id="resultMapObj" type="com.dodam.infra.modules.codegroup.CodeGroup"></resultMap>
+    <sql id="selectCommon">
+    	FROM codeGroup CCG
+    	WHERE 1=1
+   		<choose>
+			<when test="shDelNy == 2"></when>
+			<when test="shDelNy != null and !shDelNy.equals('')">AND CCG.codeGroupDelNy = #{shDelNy}</when>
+			<otherwise></otherwise>
+		</choose>
+		<choose>
+			<when test="shUseNy == 2"></when>
+			<when test="shUseNy != null and !shUseNy.equals('')">AND CCG.codeGroupUseNy = #{shUseNy}</when>
+			<otherwise></otherwise>
+		</choose>
+		<choose>
+			<when test="shOption == 1">AND CCG.codeGroupSeq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND CCG.codeGroupName LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+ 	</sql>
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql"/>
+		SELECT 
+			CCG.codeGroupSeq
+		    ,CCG.codeGroupName
+		    ,(SELECT COUNT(CC.codeSeq) FROM zabazo.code CC WHERE 1=1 AND CC.codeGroupSeq = CCG.codeGroupSeq) AS codeCount
+		    ,CCG.codeGroupUseNy
+		    ,CCG.codeGroupDelNy
+		    ,CCG.codeGroupRegDate
+		    ,CCG.codeGroupModDate
+		<include refid="selectCommon"/>
+		<include refid="Base.selectListLowerForMysql"/>
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT
+			count(*)
+		<include refid="selectCommon"/>
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			codeGroupSeq
+			,codeGroupName
+			,codeGroupUseNy
+			,codeGroupDelNy
+			,codeGroupRegDate
+			,codeGroupModDate
+		FROM codeGroup
+		WHERE 1=1
+		AND codeGroupSeq = #{codeGroupSeq}
+	</select>
+    
+    
+    <insert id="insert">
+		INSERT INTO codeGroup(
+			codeGroupName
+	    	,codeCount
+	    	,codeGroupRegDate
+	    	,codeGroupModDate
+	    	,codeGroupUseNy
+	    	,codeGroupDelNy
+		)
+		
+		VALUES (
+			#{codeGroupName}
+			,0
+			,NOW()
+			,NOW()
+			,#{codeGroupUseNy}
+			,#{codeGroupDelNy}
+		)
+		<selectKey resultType="String" keyProperty="codeGroupSeq" order="AFTER">
+		SELECT last_insert_id()
+		</selectKey>
+	</insert>	
+	
+	<update id="update">
+		UPDATE codeGroup
+		SET 
+			codeGroupName = #{codeGroupName}
+			,codeGroupUseNy = #{codeGroupUseNy}
+			,codeGroupDelNy = #{codeGroupDelNy}
+			,codeGroupModDate = NOW()
+		WHERE
+			codeGroupSeq = #{codeGroupSeq}
+	</update>
+    
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+
+	<!-- mysql s 2022.02.15 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!--원본 <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<!--원본 <property name="url" value="jdbc:mysql://g-mysql-1.cfmagchysxsn.ap-northeast-2.rds.amazonaws.com:53306/dolphin" /> -->
+		<property name="url" value="jdbc:log4jdbc:mysql://g-mysql-1.cfmagchysxsn.ap-northeast-2.rds.amazonaws.com:53306/zabazo?allowMultiQueries=true" />
+		<property name="username" value="zbmaster" />
+		<property name="password" value="1!E%aJA3" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<!-- <property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" /> -->	<!-- 기본설정 : 패키지 변경으로 아래와 같이 수정 -->
+		<property name="mapperLocations" value="classpath:com/dodam/infra/**/**/*Mapper.xml" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!-- mysql e 2022.02.25 -->
+	
+	
+	<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+		<!-- email 인증 관련 -->
+		<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+			<property name="host" value="smtp.gmail.com" /> <!-- 고정 -->
+			<property name="port" value="587" /> <!-- 고정 -->
+			<property name="username" value="seungyunh802@gmail.com" />  <!-- 내 구글 아이디 (전화번호 안됨)-->
+			<property name="password" value="nhrypywxxujhweyg" /> <!-- 내 구글 앱 키 비밀번호 -->
+			<property name="javaMailProperties">
+				<props>
+					<prop key="mail.transport.protocol">smtp</prop>
+					<prop key="mail.smtp.auth">true</prop>
+					<prop key="mail.smtp.starttls.enable">true</prop>
+					<prop key="mail.debug">true</prop>
+					<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+					<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+				</props>
+			</property>
+		</bean>
+	</beans>
+
+</beans>

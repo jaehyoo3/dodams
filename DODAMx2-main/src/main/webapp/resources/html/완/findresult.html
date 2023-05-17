@@ -1,0 +1,163 @@
+
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>DoDam.X2</title>
+		<style type="text/css">
+			@font-face {
+			    font-family: 'SUIT-Medium';
+			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+			    font-weight: normal;
+			    font-style: normal;
+			}
+			*{
+			    font-family: 'SUIT-Medium';
+			}
+			.loginWrap {
+				width: 80%;
+				margin: auto;
+				margin-top: 100px;
+			}
+			.loginWrap .logo {
+				display:flex;
+				justify-content:center;
+				margin:auto;
+			}
+			.loginWrap .content {
+				margin: auto;
+				border: 1px solid #e5e5e5;
+				max-width: 40%;
+			}
+			.loginWrap .content .boxList  {
+				width: 70%;
+				margin: auto;
+			}
+			.loginWrap .content .boxList .listTitle {
+				padding: 0;
+				margin-top: 50px;
+			}
+			.loginWrap .content .boxList .selectBox{
+				border-bottom:1px solid rgba(0,0,0,0.08);
+				padding: 20px 0;
+			}
+			.boxList .link_prove {
+				padding-right: 0px;
+			    font-size: 13px;
+			    text-decoration: none;
+			    margin: 0;
+			    display: block;
+			}.tit_prove {
+			    font-weight: normal;
+			    font-size: 18px;
+			    color: #191919;
+			}
+			.sub_prove {
+			    font-weight: normal;
+			    font-size: 16px;
+			    color: #e0e0e0;
+			    margin-bottom: 30px;
+			}
+			.boxList .link_prove .desc_prove{
+				margin: 0;
+			    padding-top: 6px;
+			    font-size: 14px;
+			    color: #999;
+			}
+			.boxList .link_prove .linkgo {
+			    float: right;
+			}
+			.boxList .loginLink {
+				margin-top: 30px;
+				text-decoration: underline;
+				text-align: center;
+			}
+			.findBox .findFont {
+				font-size:16px;
+				font-weight: bold;
+			}
+			.findBox .findpw {
+				font-size:12px;
+			}
+			.findBox input {
+				outline: 0;
+				border: 0;
+				border-bottom: 1px solid #e5e5e5;
+				width: 100%;
+				height: 30px;
+			}
+			.findBox .email input {
+				outline: 0;
+				border: 0;
+				border-bottom: 1px solid #e5e5e5;
+				width: 49.5%;
+				height: 30px;
+			}
+			.findBox .email select {
+				outline: 0;
+				border: 0;
+				border-bottom: 1px solid #e5e5e5;
+				width: 49.5%;
+				height: 30px;
+			}
+			.findBox input:focus {
+			  border-bottom: 2px solid black;
+			}
+			.findBox {
+				padding: 20px 0;
+			}
+			.findBox button{
+				display: block;
+			    width: 100%;
+			    height: 50px;
+			    padding: 0;
+			    border: 0;
+			    border-radius: 4px;
+			    font-size: 15px;
+			    color: #191919;
+			    background: rgba(0,0,0,0.06);
+			    margin-bottom: 30px;
+			}
+			.findBox button:hover, button:focus, button:active {
+				color: white;
+				background: #FB6E14
+			}
+			hr {
+				margin-top: 30px;
+				border:0;
+				height: 1px;
+				background: #e0e0e0;
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<div class='loginWrap'>
+				<div class="logo">
+					<img src="/resources/logo/logo2.jpg">
+				</div>
+				<div class="content">
+					<div class="boxList">
+						<div class="listTitle">
+							<h2>입력한 정보와 일치한 계정을 확인해 주세요.
+							</h2>
+							<strong class="sub_prove">개인정보 보호를 위해 정보 일부를 *로 표시하였습니다.
+							<br>계정에 로그인 할 수 있는 이메일 및 전화번호가 표시됩니다.</strong>
+						</div>
+						<hr>
+						<div class="findBox">
+							<p class="findFont">
+							계**정아이디
+							</p>
+							<span><a class="findpw" href="#">비밀번호 재설정</a></span>
+						</div>
+						<hr>
+						<div class="findBox">
+						<button type="button" onclick="location.href='login.html'">로그인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

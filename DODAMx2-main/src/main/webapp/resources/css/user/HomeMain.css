@@ -1,0 +1,585 @@
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    font-family: 'SUIT-Medium';
+    box-sizing: border-box;
+}
+ul{
+    padding-left: 0;
+}
+li{
+    list-style: none;
+}
+p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+a{
+    text-decoration: none;
+}
+.navbar{
+    height: 70px;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    background: #fafafa;
+    margin: 2px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar__logo a{
+    font-size: 40px;
+    font-weight: 900;
+    margin-left: 200px;
+    color: #130d08;
+}
+.navbar__menu{
+    display: flex;
+    margin-right:200px;
+    font-size: 18px;
+    align-items: center;
+}
+.navbar__menu li{
+    margin-left: 35px;
+    font-weight: 450;
+    cursor: pointer;
+}
+.navbar__menu a{
+    color: #000;
+}
+.bellmenu{
+	display:none;
+}
+.bellmenu li{
+	width:100px;
+	height:30px;
+	background:red;
+}
+/* 배너이미지 */
+.background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    background-image:url(/resources/images/backimg.png);
+    background-size: cover;
+    margin-bottom:150px;
+}
+.spaceWrap{
+    width: 50%;
+    background-color: rgba( 255, 255, 255, 0.1 );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 15px;
+}
+.spaceEnter{
+    flex: 1;
+    text-align: center;
+}
+.spaceEnter h1{
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #fff;
+}
+.spaceEnter h2{
+    font-size: 0.8rem;
+    color: tomato;
+}
+
+.itembody{
+    width: 100%;
+    height: 350px;
+    overflow: auto;
+}
+
+.item{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 50%;
+    height: 45px;
+    border: 2px solid #e0e0e0;
+    background-color: rgba( 255, 255, 255, 0.1 );
+    margin: auto;
+    margin: 5px auto;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.5rem;
+    
+}
+.item:hover{
+    cursor: pointer;
+    background-color: #fff;
+    transition: all 0.5s;
+    color: #000;
+}
+
+.btnWrap{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnWrap a{
+    font-size: 1.8rem;
+    font-weight: bold;
+}   
+
+.bdcontainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 350px;
+}
+.bdcontainer h1{
+    padding: 25px;
+}
+.bdcontainer .image-container{
+    width: 50%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.filler-large{
+    background-color: black;
+    width: 33.33%;
+    flex: 1 1 70%;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    border: 10px solid #fff;
+}
+
+.filler-medium{
+    background-color: #000;
+    width: 33.33%;
+    flex: 1 1 30%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border: 10px solid #fff;
+}
+
+
+
+
+.bdimgbox{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    left: 0px;
+}
+.imgtextbox{
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+.filler-medium:hover .imgtextbox{
+    left: 60px;
+    font-weight: bold;
+}
+.filler-medium:hover .bdimgbox{
+    opacity: 0.3;
+}
+
+
+.filler-large:hover .imgtextbox{
+    left: 60px;
+    font-weight: bold;
+}
+.filler-large:hover .bdimgbox{
+    opacity: 0.3;
+}
+
+
+/*소개영역 s */
+.comentWrap{
+    height: 1800px;
+    margin-top: 110px;
+}
+
+.coment{
+    color: #000;
+    text-align: center;
+    margin:0 auto 0 auto;
+    transition: all 2s;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    width: 100%;
+}
+
+.imgbox{
+    border-radius: 5px;
+    height: 450px;
+}
+.imgbox img{
+    width: 100%;
+    height: 100%;
+}
+.textbox{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.textbox h1{
+    font-size: 30px;
+}
+.textbox h2{
+    font-size: 26px;
+    font-weight: 300;
+}
+.textbox p{
+    font-size: 16px;
+    font-weight: lighter;
+}
+h2{
+    color: #ff8a65;
+}
+.buttonarea{
+	width:100%;
+	display: flex;
+	justify-content: center;
+}
+.buttonarea button{
+    width: 200px;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: inline-block;
+    cursor: pointer;
+}
+/*소개영역 e */
+
+/* footer s */
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 190px;
+    margin-top:120px;
+    background: #000;
+    bottom: 0;
+}
+footer p{
+    color: #fff;
+    font-size: 16px;
+    font-weight: lighter;
+}
+.info{
+    display: flex;
+    color: #fff;
+    font-size: 16px;
+    font-weight: lighter;
+}
+.navbar__toogleBtn{
+    display: none;
+}
+/* footer e */
+
+
+/* 초대장 모달영역s */
+#open-modal {
+    border: none;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#open-modal img{
+    width: 70%;
+    height: 70%;
+    animation: vibration .16s infinite;
+}
+
+#open-modal:hover {
+    background:tomato;
+}
+
+@keyframes vibration {
+    from {
+        transform: rotate(7deg);
+    }
+    to {
+        transform: rotate(-7deg);
+    }
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.HeaderList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-content {
+    display: flex;
+    margin: 15% auto;
+    max-width: 500px;
+    min-height: 300px;
+    max-height: 200px;
+    background-color: #fff;
+    padding: 20px;
+    animation: scale 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),
+    100px 100px 80px rgba(0, 0, 0, 0.05);
+}
+.modal-content li{
+	margin:0px;
+}
+.modal-btn {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-btn button {
+    width: 60px;
+    height: 25px;
+    font-size: 1.1rem;
+    margin-left: 15px;
+    border-radius: 5px;
+    background: white;
+    border: 1px solid #e0e0e0;
+}
+
+.modal-btn button:hover{
+    background: #212121;
+    color:#fafafa;
+}
+.modal-btn button:nth-child(2):hover{
+    background: red;
+    color: #fafafa;
+}
+.modal-list{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 5px;
+    overflow: auto;
+}
+.modal-list{
+    height: 250px;
+    border: 1px solid #e0e0e0;
+    overflow: auto;
+}
+.modal-list-item .spaceName{
+    width: 50%;
+    border-radius: 15px;
+    text-align: center;
+}
+.modal-list-item{
+    width: 98%;
+    height: 30px;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.item-btnWrap button{
+    width: 50px;
+    margin: 3px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.item-btnWrap button:nth-child(1):hover{
+    background: tomato;
+}
+.item-btnWrap button:nth-child(2):hover{
+    background:#e8f5e9;
+}
+
+#close-modal {
+    float: right;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: tomato;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* 초대장모달e */
+
+
+
+
+
+
+
+/* 제일 작은사이즈 : 700px이하 */
+@media (max-width:768px){
+    .navbar{
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        align-items: center;
+        margin: 0;
+        padding: 8px 24px;
+    }
+    .navbar__logo a{
+        margin-left: 0;
+    }
+    .navbar__menu{
+        display: none;
+        margin-right: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar__menu li{
+        margin-left: 0%;
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 8px 12px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .navbar__menu li:hover{
+        background: #130d08;
+        border-radius: 15px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .hiddenMeun i{
+        display: block;
+        font-size: 30px;
+    }
+    .navbar__toogleBtn{
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 32px;
+        font-size: 28px;
+        color: #000;
+    }
+    .navbar__menu.active{
+        display: flex;
+    }
+    .background{
+        height: 600px;
+    }
+    .spaceWrap{
+        width: 90%;
+    }
+
+    .coment{
+        flex-direction: column;
+    }
+    .textbox{
+        width: 80%;
+        margin: 30px;
+    }
+    .textbox h1{
+        font-size:1.6rem;
+    }
+    .textbox h2{
+        font-size: 1.3rem;
+    }
+    .textbox p{
+        font-size: 1rem;
+    }
+    .backimg{
+        margin-top: 100px;
+        height: 800px;
+        background: #000;
+        
+    }
+    footer{
+        margin-top: 1200px;
+    }
+} 
+
+
+@media (max-width: 1400px){
+	.filler-medium, .filler-large{
+	    flex-basis: 50%;
+	}
+}
+
+/* 게시판영역 미디어쿼리 */
+@media (max-width: 768px){
+    .bdcontainer{
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+        height: 550px;
+        z-index: 0;
+        
+    }
+    .image-container{
+        margin-left: 25px;
+    }
+    .filler-medium, .filler-large{
+        width: 60%;
+        flex-wrap: wrap;
+        border: 5px solid #fff;
+    }
+    h1{
+        margin: auto;
+        font-size: 1.2rem;
+    }
+}

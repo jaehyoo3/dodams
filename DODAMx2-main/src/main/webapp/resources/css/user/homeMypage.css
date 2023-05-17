@@ -1,0 +1,308 @@
+/* 공통 */
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+* {
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'SUIT-Medium';
+    margin: 0;
+}
+body{
+	min-height:150vh;
+}
+ul{
+    padding-left: 0;
+}
+li{
+    list-style: none;
+}
+a{
+	text-decoration: none;
+}
+
+
+/* nav s */    
+.navbar{
+    height: 70px;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    background: #fafafa;
+    margin: 2px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar__logo a{
+    font-size: 40px;
+    font-weight: 900;
+    margin-left: 200px;
+    color: #130d08;
+}
+.navbar__menu{
+    display: flex;
+    margin-right:200px;
+    font-size: 18px;
+}
+.navbar__menu li{
+    margin-left: 35px;
+    font-weight: 450;
+    cursor: pointer;
+}
+.navbar__menu a{
+    color: #000;
+}
+.navbar__toogleBtn{
+    display: none;
+}
+
+
+    /* 배너화면 */    
+.background{
+    height: 300px;
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 제일 작은사이즈 : 768px이하 */
+        @media (max-width:768px){
+
+            .background h1{
+                font-size: 1.5rem;
+            }
+            .background h2{
+                font-size: 1.2rem;
+            }
+            .main-container {
+                padding-top: 2rem;
+                width: 90%;
+                margin: auto;
+            }
+            .selectbox{
+                width: 100%;
+                background: #fff;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .boxitem{
+                margin: 3px;
+                width: 100%;
+                flex: 1 1 50;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid #e0e0e0;
+                height: 250px;
+                font-size: 1rem;
+                text-align: center;
+            }
+            .boxitem:hover{
+                cursor: pointer;
+            }
+            .icon{
+                overflow: hidden;
+                width: 120px;
+                height: 120px;
+                margin: 35px auto 5px auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .icon img{
+                width: 100%;
+                height: 100%;
+            }
+            .setlist li:nth-child(1){
+                font-weight: bold;
+            }
+            .setlist li:nth-child(2){
+                font-size: 14px;
+                color: tomato;
+                margin: 5px 0;
+            }
+            .setlist li button{
+                display: none;
+            }
+             .navbar{
+		        height: auto;
+		        flex-direction: column;
+		        align-items: flex-start;
+		        align-items: center;
+		        margin: 0;
+		        padding: 8px 24px;
+		    	}
+				.navbar__logo a{
+				    margin-left: 0;
+				}
+				.navbar__menu{
+				    display: none;
+				    margin-right: 0;
+				    flex-direction: column;
+				    align-items: center;
+				    justify-content: center;
+				    width: 100%;
+				}
+				.navbar__menu li{
+				    margin-left: 0%;
+				    width: 100%;
+				    font-size: 1.5rem;
+				    padding: 8px 12px;
+				    text-align: center;
+				    cursor: pointer;
+				}
+				.navbar__menu li:hover{
+				    background: #130d08;
+				    border-radius: 15px;
+				    color: #fff;
+				    cursor: pointer;
+				}
+				.hiddenMeun i{
+				    display: block;
+				    font-size: 30px;
+				}
+				.navbar__toogleBtn{
+				    display: block;
+				    position: absolute;
+				    top: 15px;
+				    right: 32px;
+				    font-size: 28px;
+				    color: #000;
+				}
+				.navbar__menu.active{
+				    display: flex;
+				}
+		}
+
+
+        
+        /* 중간사이즈 : 700픽셀 이상이고 1439px이하 일때 */
+        @media (min-width:700px )and (max-width:1439px){ 
+            .main-container {
+                padding-top: 5rem;
+                width: 90%;
+                margin: auto;
+            }
+            .selectbox{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .boxitem{
+                margin: 3px;
+                width: 49%;
+                flex: 1 1 50;
+                display: flex;
+                border: 1px solid #e0e0e0;
+                height: 250px;
+            }
+            .boxitem{
+                display: flex;
+                justify-content: space-around;
+            }
+            .icon{
+                width: 30%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .icon img{
+                width: 100%;
+            }
+            .setlist{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .setlist button{
+                width: 150px;
+                height: 35px;
+                background: #fff;
+                border-radius: 5px;
+                border: 1px solid #e0e0e0;
+                cursor: pointer;
+            }
+            .setlist button:hover{
+                background:black;
+                color: #fff;
+                font-weight: bold;
+            }
+            .setlist li:nth-child(1){
+                font-weight: bold;
+            }
+            .setlist li:nth-child(2){
+                margin: 15px 0;
+                color: tomato;
+                font-size: .9rem;
+            }
+            .background h1{
+                font-size: 1.5rem;
+            }
+            .background h2{
+                font-size: 1.2rem;
+            }
+        }
+
+        /* 큰사이즈 : 1440px이상부터 적용 */
+        @media (min-width:1440px){ 
+            .main-container {
+                padding-top: 5rem;
+                width: 70%;
+                margin: auto;
+            }
+            .selectbox{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .boxitem{
+                margin: 5px;
+                width: 49%;
+                height: 250px;
+                border: 1px solid #e0e0e0;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: space-around;
+            }
+            .icon{
+                width: 20%;
+                height: 120px;
+            }
+            .icon img{
+                width: 100%;
+                height: 100%;
+            }
+            .setlist li:nth-child(1){
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+            .setlist li:nth-child(2){
+                margin: 15px 0;
+                color: tomato;
+                font-size: .9rem;
+            }
+            .setlist button{
+                width: 150px;
+                height: 35px;
+                background: #fff;
+                border-radius: 5px;
+                border: 1px solid #e0e0e0;
+                cursor: pointer;
+            }
+            .setlist button:hover{
+                background:black;
+                color: #fff;
+                font-weight: bold;
+            }
+        }

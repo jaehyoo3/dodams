@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta charset="uTF-8"> 
+		<meta name ="viewport" content="width=device-width, initial-scaLe=1.0">
+		<title></title>
+		<style type='text/css'>
+			@font-face {
+			    font-family: 'SUIT-Medium';
+			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+			    font-weight: normal;
+			    font-style: normal;
+			} * {
+	            outline: none;
+	            box-sizing: border-box;
+	            font-family: 'SUIT-Medium';
+	        } .main-container {
+	        	width: 30%;
+	        	margin: auto;
+	        } .main-container .account-wrap {
+	        	margin-top: 30px;
+	        	width: 100%;
+	        } .information-font {
+	        	font-size: 12px;
+	        	font-weight: bold;
+	        	color:#4A4A4A;
+	        }
+	         .description-font {
+	        	font-size: 12px;
+	        	font-weight: bold;
+	        	color:#959595;
+	        }
+	        .profileImg {
+	        	border: 1px solid black;
+	        	border-radius: 50%;
+	        	width: 100px;
+	        	height: 100px;
+	        	background-color: gold;
+	        	margin: auto;
+	        } .account-wrap hr {
+	        	border:0;
+	        	height: 1px;
+	        	background-color: #e0e0e0;
+	        } .account-wrap ul {
+	        	display: flex;
+	        	justify-content:space-between;
+	        	padding-left: 0;
+	        	margin-bottom: 20px;
+	        } .account-wrap li {
+	        	list-style: none;
+	        } .main-text-Font {
+	        	font-size: 16px;
+	        } .information-text-Font {
+	        	font-size: 16px;
+	        	color: blue;
+	        }
+        </style>
+	</head>
+	<body>
+		<form>
+			<div class='main-container'>
+				<h3>계정 정보</h3>
+				<hr>
+				<div class='account-wrap'>
+					<p class='information-font'>내정보 관리</p>
+					<div class='profileImg'></div>
+					<input type='file'>
+					<hr>
+					<ul>
+						<li class='main-text-Font'>아이디</li>
+						<li class='information-text-Font'>아이디 나오는영역</li>
+					</ul>
+					<ul>
+						<li class='main-text-Font'>비밀번호</li>
+						<li class='information-text-Font'><button type="button">변경하기</button></li>
+					</ul>
+					<ul>
+						<li class='main-text-Font'>이름</li>
+						<li class='information-text-Font'>이름 나오는영역</li>
+					</ul>
+					<ul>
+						<li class='main-text-Font'>닉네임</li>
+						<li class='information-text-Font'>닉네임 나오는영역</li>
+					</ul>
+					<ul>
+						<li class='main-text-Font'>이메일</li>
+						<li class='information-text-Font'>닉네임 나오는영역</li>
+					</ul>
+					<ul>
+						<li class='main-text-Font'>휴대전화</li>
+						<li class='information-text-Font'>번호 나오는 영역</li>
+					</ul>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

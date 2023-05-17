@@ -1,0 +1,570 @@
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} * {
+    box-sizing: border-box;
+    font-family: 'SUIT-Medium';
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    padding-left: 0;
+}
+li{
+    list-style: none;
+}
+body{
+	min-height: 100vh;
+}
+
+/* nav s */    
+.navbar{
+    height: 70px;
+    border-top: 2px solid #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    background: #fafafa;
+    margin: 2px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar__logo a{
+    font-size: 40px;
+    font-weight: 900;
+    margin-left: 200px;
+    color: #130d08;
+}
+.navbar__menu{
+    display: flex;
+    margin-right:200px;
+    font-size: 18px;
+}
+.navbar__menu li{
+    margin-left: 35px;
+    font-weight: 450;
+    cursor: pointer;
+}
+.navbar__menu a{
+    color: #000;
+}
+.navbar__toogleBtn{
+    display: none;
+}
+
+/* 배너화면 */
+.background{
+    height: 300px;
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.space{
+    color: #212121;
+    border:3px solid #e0e0e0;
+}
+.space:hover{
+    transition: 0.5s;
+    font-weight: bold;
+    transition: .0s;
+    color: #212121;
+}
+
+
+
+    .startSpace{
+        text-align: center;
+        flex: 1;
+        margin: 5px;
+        min-height: 600px;
+        overflow: auto;
+    }
+@media (max-width:768px ){
+    h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    h2{
+    	font-size:1.1rem;
+    	
+    }
+    h3{
+        font-size: 0.8rem;
+        color: tomato;
+    }
+    .spacebackground{
+        display: block;
+        background: #000;
+        color: #fff;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+    }
+    .spaceWrap{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+    }
+    /* D-Day전 스페이스s */
+
+    .stspace-box{
+        width:100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .stspace-box h1{
+    	height: auto;
+    }
+    .space{
+        border-radius: 7px;
+        margin: 15px;
+        width: 100%;
+        max-width: 600px;
+      	border:1px solid #e0e0e0;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        font-size: 0.8rem;
+        
+    }
+    .travel-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+    .travel-info li{
+        padding-top: 5px;
+    }
+    .space-item{
+        font-weight: bold;
+    }
+    
+    .space-info{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .space-info li:nth-child(2){
+        width: 90px;
+        height: 90px;
+        border-radius: 5px;
+        border: 2px solid #e0e0e0;
+        overflow: hidden;
+    }
+    .space-info li:nth-child(2) img{
+        width: 100%;
+        height: 100%;
+    }/* D-Day전 스페이스end */
+
+
+/* 종료된 스페이스 영역 */
+    .endSpace{
+        overflow: auto;
+        text-align: center;
+        flex: 1;
+        overflow: auto;
+        margin: 5px;
+        margin-top: 80px;
+    }
+    .spbutton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .spbutton button{
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 50%;
+        margin: 2px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .spbutton li:nth-child(1) button:hover{
+        color: #fff;
+        background: #c4001d;
+    }
+    .spbutton li:nth-child(2) button:hover{
+        color: #000;
+        background: #fff9c4;
+    }
+    
+    	.navbar{
+		        height: auto;
+		        flex-direction: column;
+		        align-items: flex-start;
+		        align-items: center;
+		        margin: 0;
+		        padding: 8px 24px;
+		    	}
+				.navbar__logo a{
+				    margin-left: 0;
+				}
+				.navbar__menu{
+				    display: none;
+				    margin-right: 0;
+				    flex-direction: column;
+				    align-items: center;
+				    justify-content: center;
+				    width: 100%;
+				}
+				.navbar__menu li{
+				    margin-left: 0%;
+				    width: 100%;
+				    font-size: 1.5rem;
+				    padding: 8px 12px;
+				    text-align: center;
+				    cursor: pointer;
+				}
+				.navbar__menu li:hover{
+				    background: #130d08;
+				    border-radius: 15px;
+				    color: #fff;
+				    cursor: pointer;
+				}
+				.hiddenMeun i{
+				    display: block;
+				    font-size: 30px;
+				}
+				.navbar__toogleBtn{
+				    display: block;
+				    position: absolute;
+				    top: 15px;
+				    right: 32px;
+				    font-size: 28px;
+				    color: #000;
+				}
+				.navbar__menu.active{
+				    display: flex;
+				}
+    
+    
+}
+
+@media (min-width:769px) and (max-width:1439px){ 
+    .spacebackground{
+    	height: 230px;
+    }
+    .spacebackground h1{
+    	font-size:2.2rem;
+    	font-weight: bold;
+    }
+    h2{
+    	font-size:1.3rem;
+    }
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    h3{
+        font-size: 0.9rem;
+        color: tomato;
+    }
+    .spacebackground{
+        display: none;
+    }
+    .spaceWrap{
+        display: flex;
+        width: 100%;
+        margin: 50px auto;
+    }
+    .startSpace{
+        text-align: center;
+        flex: 1;
+        margin: 5px;
+
+    }
+    .startSpace{
+        overflow: auto;
+    }
+    .stspace-box{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .space{
+        border-radius: 7px;
+        margin: 15px;
+        width: 100%;
+        max-width: 600px;
+        border:1px solid #e0e0e0;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        font-size: 0.8rem;
+        
+    }
+    .travel-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+    .travel-info li{
+        padding-top: 5px;
+    }
+    .space-item{
+        font-weight: bold;
+    }
+    
+    .space-info{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .space-info li:nth-child(2){
+        width: 90px;
+        height: 90px;
+        border-radius: 5px;
+        border: 2px solid #e0e0e0;
+        overflow: hidden;
+    }
+    .space-info li:nth-child(2) img{
+        width: 100%;
+        height: 100%;
+    }
+    .endSpace{
+        overflow: auto;
+        text-align: center;
+        flex: 1;
+        overflow: auto;
+        margin: 5px;
+    }
+    .spbutton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+    }
+    .spbutton button{
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 50%;
+        margin: 2px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .spbutton li:nth-child(1) button:hover{
+        color: #fff;
+        background: #c4001d;
+    }
+    .spbutton li:nth-child(2) button:hover{
+        color: #000;
+        background: #fff9c4;
+    }
+	.navbar{
+		        height: auto;
+		        flex-direction: column;
+		        align-items: flex-start;
+		        align-items: center;
+		        margin: 0;
+		        padding: 8px 24px;
+		    	}
+				.navbar__logo a{
+				    margin-left: 0;
+				}
+				.navbar__menu{
+				    display: none;
+				    margin-right: 0;
+				    flex-direction: column;
+				    align-items: center;
+				    justify-content: center;
+				    width: 100%;
+				}
+				.navbar__menu li{
+				    margin-left: 0%;
+				    width: 100%;
+				    font-size: 1.5rem;
+				    padding: 8px 12px;
+				    text-align: center;
+				    cursor: pointer;
+				}
+				.navbar__menu li:hover{
+				    background: #130d08;
+				    border-radius: 15px;
+				    color: #fff;
+				    cursor: pointer;
+				}
+				.hiddenMeun i{
+				    display: block;
+				    font-size: 30px;
+				}
+				.navbar__toogleBtn{
+				    display: block;
+				    position: absolute;
+				    top: 15px;
+				    right: 32px;
+				    font-size: 28px;
+				    color: #000;
+				}
+				.navbar__menu.active{
+				    display: flex;
+				}
+			}    
+
+
+/* 큰사이즈 : 1440px이상부터 적용 */
+@media (min-width:1440px ){ 
+	.spacebackground{
+    	height: 230px;
+    }
+    .spacebackground h1{
+    	font-size:2.5rem;
+    	font-weight: bold;
+    }
+    h2{
+    	font-size:1.0rem;
+    }
+	
+	
+    h1 {
+        font-size: 2rem;
+    }
+    h3{
+        font-size: 0.9rem;
+        color: tomato;
+    }
+
+
+    .spacebackground{
+        display: none;
+    }
+    .spaceWrap{
+        display: flex;
+        width: 80%;
+        margin: 50px auto;
+    }
+    /* D-Day전 스페이스s */
+    .startSpace{
+        text-align: center;
+        flex: 1;
+        
+        overflow: auto;
+	}
+    .stspace-box{
+        width:100%;
+        height:90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .space{
+        border-radius: 7px;
+        margin: 15px;
+        width: 70%;
+        max-width: 600px;
+        border:3px solid #e0e0e0;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        font-size: 0.9rem;
+    }
+    .travel-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+    .travel-info li{
+        padding-top: 5px;
+    }
+    .space-item{
+        font-weight: bold;
+    }
+    
+    .space-info{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .space-info li:nth-child(2){
+        width: 90px;
+        height: 90px;
+        border-radius: 5px;
+        border: 2px solid #e0e0e0;
+        overflow: hidden;
+    }
+    .space-info li:nth-child(2) img{
+        width: 100%;
+        height: 100%;
+    }/* D-Day전 스페이스end */
+
+
+/* 종료된 스페이스 영역 */
+    .endSpace{
+        overflow: auto;
+        text-align: center;
+        flex: 1;
+        min-height: 450px;
+       
+    }
+    .spbutton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
+    }
+    .spbutton button{
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 50%;
+        margin: 2px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .spbutton li:nth-child(1) button:hover{
+        color: #fff;
+        background: #c4001d;
+    }
+    .spbutton li:nth-child(2) button:hover{
+        color: #000;
+        background: #fff9c4;
+    }
+}
+
+
+
+
+
+
+
+
+
+

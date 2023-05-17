@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+<mapper namespace="com.dodam.infra.modules.main.MainMapper">
+
+    <resultMap id="resultMapObj" type="com.dodam.infra.modules.main.Main"></resultMap>
+    
+    <!-- 메인 영역 리스트 조회 -->
+	<select id="mainSpaceSelect" resultMap="resultMapObj">
+		SELECT DISTINCT
+			a.zbspSeq
+			,a.zbspName
+			,a.zbspStartDate
+			,b.zbsiInviteNy
+		FROM zbspSpace a
+		LEFT JOIN zbsiSpaceInvite b on b.zbspSeq = a.zbspSeq
+		LEFT JOIN zbmmMember c on c.zbmmSeq = b.zbmmSeq
+		LEFT JOIN zbskSpaceKeyword d on d.zbspSeq = a.zbspSeq
+		WHERE 1=1
+			and b.zbsiInviteNy != 3
+			<!-- and b.zbsiInviteNy=1 or b.zbsiInviteNy=0 -->
+			and c.zbmmSeq = #{zbmmSeq}
+	</select>
+	
+    <!-- 마이페이지 종료 리스트 조회 -->
+	<select id="mainEndSpaceSelect" resultMap="resultMapObj">
+		SELECT
+			zbspName
+			,zbspStartDate
+			,zbspEndDate
+			,zbmmSeq
+			,zbspSeq
+			,(select count(*) from zbsiSpaceInvite where 1=1 and a.zbspSeq = zbspSeq and zbsiInviteNy in(0,2)) as zbmmCount
+			,GROUP_CONCAT(zbskKeywordCode SEPARATOR ',') AS zbskKeywordCode
+		FROM end_space a
+		where 1=1
+			and zbmmSeq = #{zbmmSeq}
+		group by zbspSeq;	
+	</select>
+
+	<!-- 마이페이지 진행 리스트 조회 -->
+	<select id="mypageSpaceSelect" resultMap="resultMapObj">
+		SELECT
+		 DISTINCT
+		 	(select count(*) from zbsiSpaceInvite where 1=1 and a.zbspSeq = zbspSeq and zbsiInviteNy in(0,2)) as zbmmCount
+			,a.zbspSeq
+			,a.zbspName
+			,a.zbspStartDate
+			,b.zbsiInviteNy
+			,GROUP_CONCAT(zbskKeywordCode SEPARATOR ',') AS zbskKeywordCode
+		FROM zbspSpace a
+		LEFT JOIN zbsiSpaceInvite b on b.zbspSeq = a.zbspSeq
+		LEFT JOIN zbmmMember c on c.zbmmSeq = b.zbmmSeq
+		LEFT JOIN zbskSpaceKeyword d on d.zbspSeq = a.zbspSeq
+		WHERE 1=1
+			and b.zbsiInviteNy in(0,2)
+			and c.zbmmSeq = #{zbmmSeq}
+		group by zbspSeq;	
+	</select>
+	
+	<select id="mypageCount" resultMap="resultMapObj">
+		select 
+		count('zbmmSeq') as count
+		from zbsiSpaceInvite
+		where 1=1
+		and zbsiInviteNy in(0,2)
+		and zbspSeq = #{zbspSeq}
+	</select>
+		
+    <select id="selectListBoardSpace" resultMap="resultMapObj">
+	    SELECT DISTINCT
+			a.zbspSeq
+			,a.zbspName
+			,a.zbspStartDate
+			,a.zbspEndDate
+			,a.zbspDelNy
+			,a.zbspShareNy
+			,a.zbspEndNy
+			,(select zbmmName from zbmmMember where 1=1 and zbmmSeq = b.zbmmSeq and b.zbsiAdminNy = 1) as xAdminUser
+		    ,(select count(zbspSeq) from zbsiSpaceInvite b where 1=1 and b.zbspSeq = a.zbspSeq and zbsiInviteNy in (0 , 2)) as xSpaceUser
+			,(select count(zbspSeq) from zbtfTravelFlag c where 1=1 and c.zbspSeq = a.zbspSeq) as xTravelFlag
+			,a.zbspRegDate
+		FROM zbspSpace a
+		INNER JOIN zbsiSpaceInvite b on a.zbspSeq = b.zbspSeq
+		INNER JOIN zbtfTravelFlag c on a.zbspSeq = c.zbspSeq
+		WHERE 1=1
+		AND a.zbspEndNy = 1
+		AND a.zbspShareNy =1
+		AND a.zbspDelNy = 0
+		AND b.zbsiAdminNy = 1
+	</select>
+	<select id="selectListBoardSpaceKeyword" resultMap="resultMapObj">
+	    SELECT 
+			a.zbskSeq
+		    ,a.zbspSeq
+		    ,a.zbskKeywordCode
+		    ,a.zbskKeywordType
+		    ,a.zbskDelNy
+		FROM zbskSpaceKeyword a
+		Inner join zbspSpace b ON b.zbspSeq = a.zbspSeq
+		WHERE 1=1
+		<choose>
+			<when test="zbskKeywordCode != null and zbskKeywordCode !=''">
+				<!-- AND zbskKeywordCode in (#{zbskKeywordCode}) -->
+	       	 	AND a.zbskKeywordType = #{zbskKeywordType}
+				AND a.zbskDelNy = 0
+	       	 	AND b.zbspEndNy = 1 
+				AND b.zbspShareNy = 1
+				AND b.zbspDelNy = 0
+				AND zbskKeywordCode in(
+	    		<foreach item="zbskKeywordCode" collection="zbskKeywordCode.split(',')" separator=",">
+	           		#{zbskKeywordCode}
+	       	 	</foreach>  
+	       	 	)
+			</when>
+			<otherwise>
+				AND a.zbskDelNy = 0
+	       	 	AND b.zbspEndNy = 1 
+				AND b.zbspShareNy = 1
+				AND b.zbspDelNy = 0
+			</otherwise>
+		</choose>
+		group by zbspSeq
+	</select>
+	<select id="selectSearchResultCount" resultType="Integer">
+	    SELECT 
+			count(DISTINCT a.zbspSeq) as boardCount
+		FROM zbskSpaceKeyword a
+		Inner join zbspSpace b ON b.zbspSeq = a.zbspSeq
+		WHERE 1=1
+		<choose>
+			<when test="zbskKeywordCode != null and zbskKeywordCode !=''">
+				<!-- AND zbskKeywordCode in (#{zbskKeywordCode}) -->
+	       	 	AND a.zbskKeywordType = #{zbskKeywordType}
+				AND a.zbskDelNy = 0
+	       	 	AND b.zbspEndNy = 1 
+				AND b.zbspShareNy = 1
+				AND b.zbspDelNy = 0
+				AND zbskKeywordCode in(
+	    		<foreach item="zbskKeywordCode" collection="zbskKeywordCode.split(',')" separator=",">
+	           		#{zbskKeywordCode}
+	       	 	</foreach>  
+	       	 	)
+			</when>
+			<otherwise>
+				AND a.zbskDelNy = 0
+	       	 	AND b.zbspEndNy = 1 
+				AND b.zbspShareNy = 1
+				AND b.zbspDelNy = 0
+			</otherwise>
+		</choose>
+	</select>
+	<select id="selectListBoardSpaceKeywordMatch" resultMap="resultMapObj">
+		SELECT 
+			a.zbskSeq
+			,a.zbspSeq
+			,a.zbskKeywordCode
+			,a.zbskKeywordType
+			,a.zbskDelNy
+		FROM zbskSpaceKeyword a
+		WHERE 1=1
+		AND a.zbskDelNy = 0
+	</select>
+		<!-- 만족도 조회 -->
+	<select id="selectLikeScore" resultMap="resultMapObj">
+		SELECT
+			a.zbspSeq
+		    ,(select zbspName from zbspSpace where 1=1 and a.zbspSeq = zbspSeq) as zbspName
+			,TRUNCATE(AVG(a.zbsiLike), 0) as xLikeAvg 
+		FROM zbsiSpaceInvite a
+		WHERE 1=1 
+		GROUP BY zbspSeq
+	</select>
+	
+	<!-- 메인화면 알림 -->
+	<select id="inviteSelect" resultMap="resultMapObj">
+		SELECT
+			a.zbsiSeq
+			,a.zbsiInviteNy
+			,c.zbspName
+		FROM
+			zbsiSpaceInvite a
+		LEFT JOIN zbmmMember b ON a.zbmmSeq = b.zbmmSeq
+		LEFT JOIN zbspSpace c ON c.zbspSeq = a.zbspSeq
+		WHERE 1=1
+		AND	a.zbsiInviteNy = 1
+		AND b.zbmmSeq = #{zbmmSeq}
+	</select>
+	
+	<!--초대장 수락  -->
+	<update id="inviteY">
+		UPDATE zbsiSpaceInvite
+		SET
+			zbsiInviteNy = 2
+		WHERE 1=1
+		AND zbsiSeq  = #{zbsiSeq }	
+	</update>
+	<!--초대장 거절  -->
+	<update id="inviteN">
+		UPDATE zbsiSpaceInvite
+		SET
+			zbsiInviteNy = 3
+		WHERE 1=1
+		AND zbsiSeq  = #{zbsiSeq }	
+	</update>
+	<!-- Space 입장 권한 확인 -->
+	<select id="checkSpaceAuth" resultMap="resultMapObj">
+		SELECT
+			a.zbspSeq
+		    ,a.zbsiInviteNy
+		    ,a.zbmmSeq
+		FROM zbsiSpaceInvite a
+		JOIN zbspSpace b on a.zbspSeq = b.zbspSeq
+		WHERE 1=1
+			AND a.zbsiDelNy = 0
+		    AND b.zbspDelNy = 0
+			AND a.zbsiInviteNy in (0 , 2)
+		    AND b.zbspSeq = #{zbspSeq}
+		    AND a.zbmmSeq = #{sessSeq}
+	</select>
+	<select id="mainRandView" resultMap="resultMapObj">
+		select
+			a.zbspName
+			,a.zbspSeq
+			,(select AVG(zbsiLike) from zbsiSpaceInvite where a.zbspSeq = zbspSeq) as zbspavg
+			,b.uuidName
+			,b.path
+			,b.type
+			,(select count(*) from zbsiSpaceInvite where 1=1 and a.zbspSeq = zbspSeq and zbsiInviteNy in(0,2)) as zbsp
+		FROM
+			zbspSpace a
+		LEFT JOIN 
+			zbspSpaceUploaded b
+		ON
+			a.zbspSeq = b.pseq
+		WHERE 1=1
+		and a.zbspEndNy = 1 
+		ORDER BY RAND()
+		LIMIT 6
+	</select>
+</mapper>

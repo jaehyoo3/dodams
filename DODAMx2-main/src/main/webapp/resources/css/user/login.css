@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    box-sizing: border-box;
+    font-family: 'SUIT-Medium';
+    margin: 0;
+    padding: 0;
+}
+img {
+    max-width: 100%;
+} 
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color:#000;
+}
+.typing-demo {
+    width: 14ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+@keyframes typing {
+from {
+    width: 0
+}
+}
+
+@keyframes blink {
+50% {
+    border-color: transparent
+}
+}
+.container h2{
+    margin-top: 150px;
+    font-size: 2.5rem;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginBox{
+    width: 100%; 
+    max-width: 420px;
+    height: 400px;
+    border: 1px solid #e0e0e0;
+    border-radius:5px ;
+}
+.info{
+    display: flex;
+    margin-top: 15px;
+}
+.info li{
+    margin: 5px;
+    cursor: pointer;
+}
+.info li:nth-child(1),
+.info li:nth-child(2){
+    border-right: 1px solid #e0e0e0;
+    padding-right: 10px;
+}
+.box-input{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 28px
+}
+.box-input input[type=text],
+.box-input input[type=password]{
+    padding: 12px;
+    margin-top: 20px;
+    height: 45px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+.box-input input[type=checkbox]{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.box-input button{
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    background: #191970;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.3rem;
+    border-radius: 5px;
+
+}
+.loginbtnWrap{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    cursor: pointer;   
+}
+.loginbtn{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    margin: 15px;
+    cursor:pointer;
+}
+.loginbtn_img{
+	cursor:pointer;
+}
+
+
+p{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: grey;
+}

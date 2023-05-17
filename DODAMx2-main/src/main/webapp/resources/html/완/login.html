@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>로그인</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/resources/favicon/favicon.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+     
+     <style type="text/css">
+     	.info_user .link_join{
+     		float: left;
+     		font-size: 12px;
+     	}
+     	.info_user .list_user .findPwd {
+     		float: right;
+     		font-size: 12px;
+     	}
+     	.info_user .list_user .findId {
+     		float: right;
+     		font-size: 12px;
+     	}
+     	li ::before{
+     		content: '';
+     		float: left;
+     		width: 1px;
+     		height: 10px;
+     		margin-top: 4px;
+     		margin-right: 10px;
+     		margin-bottom: 4px;
+     		margin-left: 10px;
+     		background-color: #e5e5e5;
+     	}
+     	li {
+     		list-style : none;
+     	}
+     	a {
+     		color: rgba(0,0,0,0.7);
+     	}
+     </style>
+</head>
+<body>
+
+<!-- start --> 
+
+
+
+<section class="vh-100" style="background-image: url('login_background.jpg')">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-5"><a href="#"><img src="/resources/logo/logo2.jpg"></a></div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="id" onkeyup="enterkey();" class="form-control form-control-lg"  placeholder="아이디"/>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" id="pwd" onkeyup="enterkey();" class="form-control form-control-lg" placeholder="비밀번호"/>
+            </div>
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-start mb-4">
+              <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+              <label class="form-check-label" for="form1Example3">&nbsp;자동 로그인</label>
+            </div>
+
+            <button type="button" id="btnLogin" name="btnLogin" class="btn btn-dark btn-lg btn-block"  style="width: 100%">로그인</button></a>
+            <br>
+            <div class="info_user">
+             <a href="./signup.jsp" class="link_join" style="text-decoration:none">회원가입</a>
+              <ul class="list_user">
+               <li>
+                <a href="find" class="findPwd" style="text-decoration:none">아이디/비밀번호 찾기</a>
+               </li>
+              </ul>
+             </div>
+              
+            <br>	
+            <hr class="my-4">
+			<button type="button" class="btn btn-warning btn-lg" style="text-align:center; width:100%; --bs-btn-hover-color: rgb(0, 200, 200); --bs-btn-border-color: none; --bs-btn-hover-bg: rgb(255, 236, 6); --bs-btn-hover-border-color: rgb(255, 236, 6); --bs-btn-bg: rgb(255, 255, 0); --bs-btn-color: #090909;">
+				Kakao로 로그인
+			</button>
+					
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- end -->
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	function loginAjax(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/loginProc"
+			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					if(response.rtt =="1"){
+						location.href = "/member/memberList";
+					
+					}else{
+					
+					location.href = "/main";
+					}
+				} else {
+					alert("로그인 실패");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	}
+	
+	$("#btnLogin").on("click", function(){
+		
+		loginAjax();
+		
+	});
+	
+	//엔터키 로그인
+	function enterkey() {
+       if (window.event.keyCode == 13) {
+				
+       	loginAjax();
+            
+       	}
+	}
+	
+</script>
+</body>
+</html>

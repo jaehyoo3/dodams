@@ -1,0 +1,511 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="uTF-8"> 
+		<meta name ="viewport" content="width=device-width, initial-scaLe=1.0">
+		<title>regform</title>
+		<style>
+			@font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+        * {
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'SUIT-Medium';
+            margin: 0;
+        } 
+        img {
+            max-width: 100%;
+        } 
+        li{
+            list-style: none;
+        }
+        body {
+            background-color:gray;
+        } 
+        a{
+            text-decoration: none;
+        }
+        hr{
+            background:#eeeeee;
+            height:1px;
+            border:0;
+            margin-bottom: 30px;
+        }
+        table,th,td,tr{
+            border: 1px solid #e0e0e0;
+            border-collapse: collapse;
+        }
+        th{
+            height: 60px;
+            font-weight: bold;
+            background: #eceff1;
+            overflow: hidden;
+            cursor: auto;
+        }
+        td{
+            height: 30px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .addr{
+            color: tomato;
+        }
+        .container {
+            width: 100%;
+            height: 1000px;
+            background-color: #fff;
+            display: flex;
+            overflow: hidden;
+            border-radius: 20px;
+            font-size: 15px;
+            border: 3px solid #424242;
+        }
+        .sidebar {
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #000;
+            background: #fff;
+        }
+        .sidebar_logo {
+            margin-left: 30px;
+            margin-top: 15px;
+            text-decoration: none;
+            width: 150px;
+            height: 50px;
+            overflow: hidden;
+        }
+        .sidebar_logo img{
+            width: 100%;
+            height: 100%;
+        }
+        .side_menu_list{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding-left: 0;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+        .side_menu p{
+            margin: 40px 0px 0px 0px;
+            font-size: 8px
+        }
+        .menuWrap{
+            float: left ;
+        }
+        .side_menu_list p{
+            font-weight: bold;
+            font-size: 8px;
+        }
+        .side_menu_list a{
+            text-decoration: none;
+            color: #000;
+        }
+        .menu_btn{
+            display: flex;
+            flex-direction: column;
+            padding-left: 0;
+        }
+        .menu_btn a{
+            color: #000;
+        }
+
+
+        .setting-wrap{
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #fff;
+            background: #000;
+        }
+        .fontwrap{
+            display: flex;
+        }
+        .fontwrap p{
+            margin-left: 15px;
+        }
+        .user_profile{
+            margin: 50px auto 0px auto;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #e0e0e0;
+            border-radius:50%;
+            overflow: hidden;
+        }
+        .profile-img{
+            width: 100%;
+            height: 100%;
+        }
+        .menu_item{
+            width: 218px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu_item:hover{
+            background: #000;
+            color: #fff;
+        }
+
+        .space_wrap {
+            display: flex;
+            width: 13%;
+            height: 50px;
+            border: 1px solid #000;
+            background: #fff;
+            border-radius: 15px;
+            align-items: center;
+            padding-left: 20px;
+            margin-left: auto;
+            color: #000;
+        }
+        .user_count{
+            font-size: 14px;
+            color: #01579b;
+        }
+        .user-img {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .user-name {
+            font-size: 14px;
+            margin: 0 6px 0 12px;
+        }
+
+        .mainWrap{
+            width: 95%;
+            height: 100%;
+            margin: auto;
+        }
+        .mainWrap p{
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            margin-top: 50px;
+            font-size: 2rem;
+        } 
+        .tableWrap{
+            width: 100%;
+        }
+        .th_checkbox{
+            width: 50px;
+        }
+        tr:hover{
+            background-color: #eeeeee;
+            cursor: pointer ;
+        }
+        .addbtnWrap{
+            width: 100%;
+            height: 90px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            
+        }
+        .addbtn{
+            flex: 1 auto;
+            text-align: center;
+        }
+        .addbtn button{
+            width: 35%;
+            height: 50px;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            background: #fff;
+            border: 1px solid #000;
+        }
+
+
+        #open-modal {
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #000;
+            border: 1px solid;
+            
+        }
+        
+        #open-modal:hover {
+        color: #fff;
+        background: #000;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: -350px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-content {
+            margin: 20% auto;
+            max-width: 1000px;
+            background-color: #fff;
+            padding: 20px;
+            animation: scale 0.5s ease;
+            border-radius: 10px;
+            box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02),
+            22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),
+            100px 100px 80px rgba(0, 0, 0, 0.05);
+        }
+        h4{
+            margin-top: 30px;
+        }
+        ul{
+            padding-left: 0;
+        }
+        .modal-header h3{
+            display: inline-block;
+            font-size: 50px;
+        }
+        .modal-body {
+            margin-top: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        .modal_catagory{
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .modal_catagory li{
+            height: 60px;
+            width: 60px;
+            border: 1px solid #e0e0e0;
+        }
+        .list_name{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .list_name input{
+            width: 300px;
+            height: 30px;
+            border: none;
+            border-bottom: 2px solid #000;
+            outline: none;
+            text-align: center;
+            font-weight: 300;
+        }
+        
+        .modal_people{
+            height:60px;
+            display: flex;
+            justify-content: space-between;
+            padding: 25px;
+        }
+        .modal-img{
+            height: 300px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .modal-btn{
+            margin-top: 30px;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .total{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 24px;
+        }
+        .btn button{
+            width: 150px;
+            height: 50px;
+            border: 1px solid #e0e0e0;
+        }
+        .btn button:hover{
+            background: #000;
+            transition: all 1.1s ease;
+            color: #fff;
+        }
+        #close-modal {
+            float: right;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: tomato;
+        }
+        @keyframes scale {
+            from {
+            transform: scale(0);
+            }
+        
+            to {
+                transform: scale(1);
+            }
+        }
+
+			
+		</style>
+	</head>
+	<body>
+	<form>
+		<div class="container">
+            <div class="sidebar">
+                <div class="sidebar_logo">
+                    <a href="#"><img src="/AirLanguage/img/DODAMx2_LOGO-removebg-preview.png" alt=""></a>
+                </div>
+                <div class="side_menu">
+                    <ul class="side_menu_list">
+                        <li class="user_profile">
+                            <img class="profile-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                        </li>
+                        <li><a href="#">아이디 영역</a></li>
+                    </ul>    
+                    <p>MENU</p>
+                    <hr>
+                    <ul class="menu_btn">
+                        <a href="#"><li class="menu_item">HOME</li></a>
+                        <a href="#"><li class="menu_item">CHATTIGN</li></a>
+                        <a href="#"><li class="menu_item">MAP</li></a>
+                        <a href="#"><li class="menu_item">ZOOM</li></a>
+                    </ul>
+                    <div class="side_menu_footer">
+                        <a href="">Setting</a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="header">
+                    <div class="fontwrap">
+                        <p>TEST WorkSpace</p>
+                        <p>D-19일</p>
+                    </div>
+                    <div class="space_wrap">
+                        <img class="user-img" src="https://cdn-icons-png.flaticon.com/512/3659/3659904.png" alt="">
+                        <div class="user-name">스페이스 회원수</div>
+                        <div class="user_count">10명</div>
+                    </div>
+                </div>
+                
+                <div class="mainWrap">
+                    <p>더치페이</p>
+                    <table class="tableWrap">
+                        <tr>
+                            <th class="th_checkbox">
+                                <input type="checkbox" name="" id="">
+                            </th>
+                            <th>사용분류</th>
+                            <th>인원수</th>
+                            <th>인당 예상비용</th>
+                            <th>영수증</th>
+                            <th>사용일</th>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" id=""></th>
+                            <td>ㅁㄴㅇ</td>
+                            <td>ㅁㄴㅇ</td>
+                            <td>ㅁㄴㅇ</td>
+                            <td>ㅁㄴㅇ</td>
+                            <td>ㅁㄴㅇ</td>
+                        </tr>
+                    </table>
+                    <div class="addbtnWrap">
+                        <div class="addbtn" ><button type="button" id="open-modal">추가하기</button>
+                            <div class="modal">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3>RECEIPT</h3>
+                                        <span id="close-modal">&times;</span><hr>
+                                    </div>
+                                    <h4>리스트명을 입력하세요</h4>
+                                    <div class="list_name">
+                                        <input type="text" name="" id="">
+                                    </div>
+                                    <h4>어떤곳에 사용했나요?</h4>
+                                    <div class="modal-body">
+                                        <ul class="modal_catagory">
+                                            <li>분류1</li>
+                                            <li>분류2</li>
+                                            <li>분류3</li>
+                                            <li>분류4</li>
+                                        </ul>                                        
+                                    </div>
+                                    <h4>누구랑 사용했나요?</h4>
+                                    <div class="modal-body">
+                                        <ul class="modal_people">
+                                            <li><input type="checkbox" name="" id="">멤버</li>
+                                            <li><input type="checkbox" name="" id="">데이터</li>
+                                            <li><input type="checkbox" name="" id="">받아오는</li>
+                                            <li><input type="checkbox" name="" id="">구역</li>
+                                        </ul>                                        
+                                    </div>
+                                    <h4>영수증이 있다면 첨부해보세요</h4>
+                                    <div class="modal-img">
+                                        <span>영수증 사진 들어가는 곳</span>
+                                        <input type="file" name="" id="">                                
+                                    </div>
+                                    <div class="modal-btn">
+                                        <ul class="total">
+                                            <li>총 비용:</li>
+                                            <li>1인당 예상 비용:</li>
+                                        </ul>
+                                        <div class="btn">
+                                            <button>생성</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="addbtn" ><button>삭제하기</button></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>        
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://kit.fontawesome.com/86d85c3d85.js" crossorigin="anonymous"></script>
+<script>
+const modal = document.querySelector(".modal");
+const openModalBtn = document.querySelector("#open-modal");
+const closeModalBtn = document.querySelector("#close-modal");
+
+openModalBtn.addEventListener("click", function () {
+modal.style.display = "block";
+});
+
+closeModalBtn.addEventListener("click", function () {
+modal.style.display = "none";
+});
+
+</script>
+
+</body>
+</html>

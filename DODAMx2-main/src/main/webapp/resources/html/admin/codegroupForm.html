@@ -1,0 +1,434 @@
+
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>DoDam.X2</title>
+	    <style type='text/css'>
+		    @font-face {
+			    font-family: 'SUIT-Medium';
+			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+			    font-weight: normal;
+			    font-style: normal;
+			}
+			*{
+			    font-family: 'SUIT-Medium';
+			}
+			body{
+			    margin: 0; 
+			    box-sizing: border-box;
+			}    
+			table{
+			    width: 100%;
+			    text-align: center;
+			    margin-top: 50px;
+			    table-layout: fixed;
+			}
+			a{
+			    text-decoration: none;
+			    color:white;
+			}
+			li{
+			    list-style: none;
+			}    
+			table,th,td,tr{
+			    border: 1px solid #e0e0e0;
+			    border-collapse: collapse;
+			}
+			th{
+			    height: 50px;
+			    font-weight: bold;
+			    background: #eceff1;
+			    overflow: hidden;
+			}
+			td{
+			    height: 30px;
+			    overflow: hidden;
+			}
+			
+			/* 왼쪽 사이드 메뉴s */
+			.side-menu {
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    margin-top: 120px;
+			    padding: 0;
+			    height: 100%;
+			    width: 170px;
+			    list-style-type: none;
+			    background: #212121;
+			    overflow: hidden;
+			    transition: width .4s;
+			}
+			.side-menu li {
+			width: 300px;
+			}
+			.side-menu li i {
+			font-size: 1rem;
+			margin: 20px 30px 0 22px;
+			}
+			.side-menu li a {
+			display: block;
+			font-size: .9rem;
+			text-decoration: none;
+			color: #FFF;
+			height: 60px;
+			}
+			.side-menu li a:hover{
+			background: #fff;
+			color: black;
+			display: block;
+			}/* 왼쪽사이드메뉴e */
+			
+			/* 네비게이션바s */
+			.nav_warp{
+			    height: 120px;
+			    background: #212121;
+			    width: 100%;
+			    display: inline-flex;
+			    justify-content: space-between;
+			    position: fixed;
+			}
+			.nav_logo{
+			    font-size: 1.7rem;
+			    margin: 45px 0 0 15px;
+			}
+			.nav_list {
+			    display: flex;
+			    justify-content: right;
+			    align-items: center;
+			    margin-right: 50px;
+			    padding-left: 0;
+			}
+			.nav_logout{
+			    color: white;
+			}
+			.nav_logout button{
+			    margin-top: 7px;
+			    width: 70px;
+			    height: 30px;
+			    border-radius: 15px;
+			    border:0px;
+			    background: #fff;
+			    font-size: 14px;
+			}
+			.nav_logout button:hover{
+			    background: tomato;
+			    color: white;
+			}
+			.profile_wrap{
+			    width: 70px;
+			    height: 70px;
+			    border-radius: 50%;
+			    background: #fff;
+			    overflow: hidden;
+			}
+			.profile_img{
+			    width: 100%;
+			    height: 100%;
+			}
+			.nav_logout{
+			    text-align: center;
+			    padding-left: 0px;
+			}
+			/* 네비게이션바 e */
+			
+			/* 메인 컨테이너영역 */
+			.container{
+			    position: absolute;
+			    top: 170px;
+			    width: 70%;
+			    margin: 0px 0px 0px 350px;
+			}
+			/* form 영역 s */
+			 .form-wrap {
+				width: 60%;
+				margin: auto;
+				text-align:center;
+				border: 1px solid black;
+			}
+			.form-wrap p {
+				text-align:left;
+				margin-left: 20%;
+				margin-bottom:5px;;
+			}
+			 .form-wrap input {
+				width: 60%;
+				height: 30px;
+				border: 0;
+				margin-bottom: 5px;
+				background: #f2f2f2;
+				font-size:14px;
+				outline: 0;
+			} 
+			 .form-wrap select {
+				width: 60%;
+				height: 30px;
+				border:1px solid #E0E0E0;
+				margin-bottom: 10px;
+				text-align:center;
+			} 
+			.form-wrap ul {
+				padding: 0;
+			} 
+			.form-wrap li {
+				display: inline-block;
+				margin:auto;
+				width:32%;
+			} 
+			.form-wrap li input[type=text] {
+				width: 70%;
+			}
+			.btn-wrap {
+				width: 60%;
+				margin: auto;
+				text-align:center;
+			}
+			.btn-wrap ul {
+				padding: 0;
+			}
+			.btn-wrap li {
+				display: inline-block;
+				margin:auto;
+				margin-right: 10px;
+				margin-left: 10px;
+			} 
+			.btn-wrap li button {
+				outline: 0;
+				border: 0;
+				border-radius: 0;
+				width: 100px;
+				margin-bottom: 5px;
+				color: #FFF;
+				font-size: 14px;
+				height: 30px;
+				padding:1px 2px;
+			}
+			.leftColor {
+				background-color:red;
+			}
+			.rightColor {
+				background-color:green;
+			}
+			.leftColor:hover, .leftColor:active, .leftColor:focus {
+			  background: pink;
+			} 
+			.rightColor:hover, .rightColor:active, .rightColor:focus {
+			 background: #81c147;
+			}
+			/* form 영역 e */
+			
+			/* 멤버 프로필 사진 영역 S */
+			.img-wrap {
+				width: 150px;
+				height: 150px;
+				border: 1px solid black;
+				border-radius: 100%;
+				margin:auto;
+			}
+			/* 멤버 프로필 사진 영역 E */
+			
+			/* 검색영역 s*/
+			.search_wrap{
+			    display: flex;
+			    flex-direction: column;
+			    justify-content: center;
+			    width: 100%;
+			    background: #eeeeee;
+			    border-radius: 15px;
+			}
+			.search_wrap .search_item_top input,
+			.search_wrap .search_item_bottom input {
+			    width: 250px;
+			    height: 30px;
+			    margin: 10px;
+			    border: none;
+			    border-radius: 5px;
+			    text-align: center;
+			}
+			.search_item_top select,
+			.search_item_bottom select{
+			    width:250px;
+			    height: 34px;
+			    margin:10px;
+			    border-radius: 5px;
+			    border: none;
+			    text-align: center;
+			}
+			.search_item_top{
+			    display: flex;
+			    justify-content: center;
+			    padding-left: 0;
+			}
+			.search_item_bottom{
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    padding-left: 0;
+			}
+			.search_item_bottom button{
+			    width: 34px;
+			    height: 34px;
+			    margin-left: 10px;
+			    border: 1px solid #e0e0e0;
+			    border-radius: 5px;
+			    background: white;
+			    cursor: pointer;
+			}  
+			/* 검색영역 e*/
+			/* 테이블s */
+			.tablelist{
+			    width: 100%;
+			    margin-top: 50px;
+				display: inline-block;
+			}
+			.num, .checkbox{
+			    width: 8%;
+			}
+			.codename{
+			    width:19%;
+			}
+			/* 테이블e */
+			
+			
+			/* 페이지네이션 s*/
+			
+			.pagination {
+			list-style: none;
+			display: inline-block;
+			padding: 0;
+			}
+			.pagination li {
+			    display: inline;
+			    text-align: center;
+			}
+			.pagination a {
+			    float: left;
+			    display: block;
+			    font-size: 14px;
+			    text-decoration: none;
+			    padding: 5px 12px;
+			    color: #fff;
+			    margin-left: -1px;
+			    border: 1px solid transparent;
+			    line-height: 1.5;
+			}
+			.pagination a.active {
+			    cursor: default;
+			}
+			.pagination a:active {
+			    outline: none;
+			}
+			.modal-2 li:first-child a {
+			    -moz-border-radius: 50px 0 0 50px;
+			    -webkit-border-radius: 50px;
+			    border-radius: 50px 0 0 50px;
+			}
+			.modal-2 li:last-child a {
+			    -moz-border-radius: 0 50px 50px 0;
+			    -webkit-border-radius: 0;
+			    border-radius: 0 50px 50px 0;
+			}
+			.modal-2 a {
+			    border-color: #ddd;
+			    color: #999;
+			    background: #fff;
+			}
+			.modal-2 a:hover {
+			    color: #263238;
+			    background-color: #eee;
+			}
+			.modal-2 a.active, .modal-2 a:active {
+			    border-color: #263238;
+			    background: #263238;
+			    color: #fff;
+			}
+			/* 페이지네이션 e*/
+			
+			/* 버튼영역s */
+			.button_wrap{
+			    display: flex;
+			    justify-content: space-between;
+			    margin-top: 25px;
+			}
+			.button_wrap .btn_reg{
+			    width: 50px;
+			    height: 50px;
+			    font-size: 25px;
+			    background: white;
+			    border: 1px solid #e0e0e0;
+			    border-radius: 5px;
+			}
+			.button_wrap .btn_reg:hover{
+			    color: #fafafa;
+			    background: #455a64;
+			}
+			.button_wrap .btn_delete{
+			    width: 50px;
+			    height: 50px;
+			    font-size: 25px;
+			    color: tomato;
+			    background: white;
+			    border: 1px solid #e0e0e0;
+			    border-radius: 5px;
+			}
+			.button_wrap .btn_delete:hover{
+			    background: tomato;
+			    color: white;
+			    border: none;
+			}
+			/* 버튼영역e */
+		</style>
+	</head>
+	<body>
+ 	<nav class="nav_warp">
+	        <div class="nav_logo">
+	            <a href="">DODAMDODAM</a>
+	        </div>
+	        <div class="nav_list">
+	            <div class="profile_wrap">
+	                <img class="profile_img"src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="">
+	            </div>
+	        <ul class="nav_logout">
+	            <li>(유저아이디)님 환영합니다.</li>
+	            <li><button>log out</button></li>
+	        </ul>
+	    </nav>
+	    <!-- 상단 네비게이션e -->
+	    
+	    <!-- 사이드 메뉴s -->
+	    <ul class="side-menu">
+	        <li><a href="Main"><i class="fa-solid fa-house"></i>홈</a></li>
+	        <li><a href="CodeList"><i class="fa-solid fa-folder"></i>코드관리</a></li>
+	        <li><a href="CodeGroupList"><i class="fa-regular fa-folder"></i>코드그룹관리</a></li>
+	        <li><a href="MemberList"><i class="fa-solid fa-user-group"></i>멤버관리</a></li>
+	        <li><a href="SpaceList"><i class="fa-solid fa-people-roof"></i>스페이스관리</a></li>
+	    </ul>
+		<div class="container">
+	    	<div class="form-wrap">
+	    		<p>CodeGroupNo </p>
+	    		<p>코드그룹 이름 *</p>
+	    		<input type="text">
+	    		<p>코드그룹 사용여부</p>
+	    		<select>
+	    			<option>dd</option>
+	    		</select>
+	    		<p>코드그룹 삭제여부</p>
+	    		<select>
+	    			<option>dd</option>
+	    		</select>
+	    		<ul>
+	    			<li>등록일: <input type="text"></li>
+	    			<li>수정일: <input type="text"></li>
+	    		</ul>
+	    	</div>
+	    	<div class='btn-wrap'>
+	    	<ul>
+	    		<li style="float:left;"><button class="leftColor">del</button></li>
+	    		<li style="float:left;"><button class="leftColor">uel</button></li>
+	    		<li style="float:right;"><button class="rightColor">commit</button></li>
+	    		<li style="float:right;"><button class="rightColor">list</button></li>
+	    	</ul>	    	
+	    </div>
+	</body>
+</html>
